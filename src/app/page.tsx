@@ -3,22 +3,22 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  CheckCircle2, 
-  TrendingUp, 
-  Clock, 
-  FileText, 
-  Users, 
-  Search, 
-  Award, 
-  ShieldCheck, 
-  ArrowRight, 
-  ChevronRight, 
-  Star, 
-  ChevronDown, 
-  Percent, 
-  Building2, 
-  DollarSign 
+import {
+  CheckCircle2,
+  TrendingUp,
+  Clock,
+  FileText,
+  Users,
+  Search,
+  Award,
+  ShieldCheck,
+  ArrowRight,
+  ChevronRight,
+  Star,
+  ChevronDown,
+  Percent,
+  Building2,
+  DollarSign
 } from "lucide-react";
 
 // --- Custom Count-Up Counter Component ---
@@ -32,12 +32,12 @@ function Counter({ target, duration = 1.5 }: { target: number; duration?: number
         let start = 0;
         const end = target;
         if (start === end) return;
-        
+
         const totalMiliseconds = duration * 1000;
         const stepTime = 20;
         const totalSteps = totalMiliseconds / stepTime;
         const increment = Math.ceil(end / totalSteps);
-        
+
         const timer = setInterval(() => {
           start += increment;
           if (start >= end) {
@@ -250,7 +250,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-primary-blue/5 blur-[80px] -z-10 animate-pulse-slow" style={{ animationDelay: "2s" }} />
 
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -263,31 +263,31 @@ export default function Home() {
               Helping individuals and businesses secure Home Loans, Business Loans, Personal Loans, Car Loans, Used Car Loans and Loan Against Property through India's leading Banks & NBFCs.
             </p>
             <div className="flex flex-wrap gap-4 mt-2">
-              <Link 
-                href="/apply" 
+              <Link
+                href="/apply"
                 className="bg-gradient-to-r from-dark-blue to-primary-blue text-white px-8 py-3.5 font-bold text-sm rounded-btn shadow-md hover:shadow-premium-hover hover:-translate-y-0.5 transition-all duration-300"
               >
                 Apply Now
               </Link>
-              <Link 
-                href="/contact" 
+              <Link
+                href="/contact"
                 className="bg-white border border-border-color text-dark-blue px-8 py-3.5 font-bold text-sm rounded-btn shadow-sm hover:border-primary-blue hover:-translate-y-0.5 transition-all duration-300"
               >
                 Talk to Expert
               </Link>
-              <a 
-                href={whatsappLink} 
-                target="_blank" 
+              <a
+                href={whatsappLink}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-8 py-3.5 font-bold text-sm rounded-btn shadow-md flex items-center gap-2 hover:-translate-y-0.5 transition-all duration-300"
               >
-                <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.451 5.437.002 9.861-4.416 9.863-9.852.001-2.633-1.02-5.107-2.875-6.963C16.488 1.832 14.022.812 11.39.812 5.952.812 1.53 5.228 1.528 10.66c-.001 1.636.43 3.22 1.25 4.62l-.993 3.63 3.732-.979c1.378.75 2.919 1.157 4.54 1.159zm11.324-7.653c-.304-.152-1.802-.888-2.08-.989-.278-.101-.48-.152-.68.152-.2.304-.777.989-.953 1.19-.177.2-.354.228-.658.076-.304-.152-1.283-.473-2.443-1.507-.903-.805-1.512-1.8-1.69-2.103-.177-.304-.018-.468.13-.62.136-.136.304-.354.456-.531.152-.177.202-.304.304-.506.101-.202.051-.38-.025-.531-.076-.152-.68-1.643-.933-2.253-.247-.59-.498-.51-.68-.52-.177-.008-.38-.01-.58-.01-.2 0-.527.076-.803.38-.278.304-1.062 1.037-1.062 2.53s1.088 2.937 1.24 3.139c.152.202 2.144 3.274 5.19 4.588.724.311 1.29.497 1.73.637.727.231 1.39.198 1.912.12.583-.088 1.802-.737 2.055-1.45.253-.715.253-1.328.177-1.45-.076-.122-.278-.202-.582-.354z"/></svg>
+                <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.451 5.437.002 9.861-4.416 9.863-9.852.001-2.633-1.02-5.107-2.875-6.963C16.488 1.832 14.022.812 11.39.812 5.952.812 1.53 5.228 1.528 10.66c-.001 1.636.43 3.22 1.25 4.62l-.993 3.63 3.732-.979c1.378.75 2.919 1.157 4.54 1.159zm11.324-7.653c-.304-.152-1.802-.888-2.08-.989-.278-.101-.48-.152-.68.152-.2.304-.777.989-.953 1.19-.177.2-.354.228-.658.076-.304-.152-1.283-.473-2.443-1.507-.903-.805-1.512-1.8-1.69-2.103-.177-.304-.018-.468.13-.62.136-.136.304-.354.456-.531.152-.177.202-.304.304-.506.101-.202.051-.38-.025-.531-.076-.152-.68-1.643-.933-2.253-.247-.59-.498-.51-.68-.52-.177-.008-.38-.01-.58-.01-.2 0-.527.076-.803.38-.278.304-1.062 1.037-1.062 2.53s1.088 2.937 1.24 3.139c.152.202 2.144 3.274 5.19 4.588.724.311 1.29.497 1.73.637.727.231 1.39.198 1.912.12.583-.088 1.802-.737 2.055-1.45.253-.715.253-1.328.177-1.45-.076-.122-.278-.202-.582-.354z" /></svg>
                 WhatsApp
               </a>
             </div>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
@@ -324,7 +324,7 @@ export default function Home() {
                 <rect x="35" y="80" width="25" height="25" rx="2" fill="#E2E8F0" />
                 <rect x="90" y="80" width="25" height="25" rx="2" fill="#E2E8F0" />
                 <rect x="60" y="125" width="30" height="45" rx="2" fill="#0B4F9F" />
-                
+
                 {/* Advisor & borrower outlines */}
                 <circle cx="-30" cy="130" r="12" fill="#1E88E5" />
                 <path d="M-45 170 C-45 150 -15 150 -15 170 Z" fill="#1E88E5" />
@@ -338,10 +338,10 @@ export default function Home() {
             </svg>
 
             {/* Floating Micro-cards */}
-            <motion.div 
+            <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-12 left-0 bg-white/90 backdrop-blur border border-border-color p-3 rounded-card shadow-md flex items-center gap-3"
+              className="absolute top-[15%] -left-4 md:-left-12 bg-white/95 backdrop-blur-md border border-border-color p-3 rounded-card shadow-premium flex items-center gap-3 z-20 hidden sm:flex"
             >
               <div className="w-8 h-8 rounded-full bg-[#22C55E]/10 flex items-center justify-center">
                 <CheckCircle2 className="w-5 h-5 text-[#22C55E]" />
@@ -352,10 +352,10 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-              className="absolute bottom-12 right-0 bg-white/90 backdrop-blur border border-border-color p-3 rounded-card shadow-md flex items-center gap-3"
+              className="absolute bottom-[20%] -right-4 md:-right-12 bg-white/95 backdrop-blur-md border border-border-color p-3 rounded-card shadow-premium flex items-center gap-3 z-20 hidden sm:flex"
             >
               <div className="w-8 h-8 rounded-full bg-primary-blue/10 flex items-center justify-center font-bold text-sm text-primary-blue">
                 %
@@ -458,14 +458,14 @@ export default function Home() {
                 <div className="h-44 bg-gradient-to-b from-[#0B4F9F]/3 to-[#1E88E5]/0 border-b border-border-color flex items-center justify-center p-8">
                   {p.icon}
                 </div>
-                
+
                 <div className="p-8 flex flex-col flex-grow gap-4">
                   <div className="self-start bg-[#22C55E]/8 px-3 py-1 rounded text-xs font-bold text-[#22C55E] uppercase tracking-wider">
                     {p.rate}
                   </div>
                   <h3 className="font-extrabold text-xl text-dark-blue">{p.title}</h3>
                   <p className="text-text-gray text-sm leading-relaxed">{p.desc}</p>
-                  
+
                   <ul className="flex flex-col gap-2 my-2">
                     {p.features.map((f, i) => (
                       <li key={i} className="flex items-center gap-2.5 text-xs text-text-gray font-medium">
@@ -474,15 +474,15 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  
+
                   <div className="grid grid-cols-2 gap-3 mt-auto pt-4">
-                    <Link 
+                    <Link
                       href={`/apply?loan=${encodeURIComponent(p.title)}`}
                       className="bg-gradient-to-r from-dark-blue to-primary-blue text-white text-center py-2.5 text-xs font-bold rounded-btn shadow hover:shadow-md transition-shadow"
                     >
                       Apply Now
                     </Link>
-                    <Link 
+                    <Link
                       href={`/loans/${p.slug}`}
                       className="bg-white border border-border-color text-center py-2.5 text-xs font-bold text-dark-blue rounded-btn hover:border-primary-blue transition-colors"
                     >
@@ -511,7 +511,7 @@ export default function Home() {
           <div className="relative pt-8 pb-4">
             {/* Connecting line */}
             <div className="absolute top-1/2 left-8 right-8 h-[2px] bg-border-color -translate-y-1/2 hidden lg:block" />
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 relative z-10">
               {timelineSteps.map((step, idx) => (
                 <motion.div
@@ -539,7 +539,7 @@ export default function Home() {
       {/* 6. WHY CUSTOMERS TRUST US */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -552,18 +552,18 @@ export default function Home() {
               <circle cx="90" cy="92" r="7" fill="#FF5F56" />
               <circle cx="110" cy="92" r="7" fill="#FFBD2E" />
               <circle cx="130" cy="92" r="7" fill="#27C93F" />
-              
+
               <rect x="90" y="150" width="320" height="20" rx="4" fill="#0B4F9F" opacity="0.8" />
               <rect x="90" y="195" width="220" height="15" rx="3" fill="#E2E8F0" />
               <rect x="90" y="225" width="260" height="15" rx="3" fill="#E2E8F0" />
               <rect x="90" y="255" width="190" height="15" rx="3" fill="#E2E8F0" />
-              
+
               <circle cx="250" cy="230" r="40" fill="#1E88E5" opacity="0.1" />
               <path d="M 235 230 L 245 240 L 265 220" stroke="#1E88E5" strokeWidth="6" strokeLinecap="round" fill="none" />
             </svg>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -609,8 +609,8 @@ export default function Home() {
           <div className="animate-scroll-marquee py-2">
             {/* First Set */}
             {partnerBanks.map((bank, idx) => (
-              <div 
-                key={`bank-1-${idx}`} 
+              <div
+                key={`bank-1-${idx}`}
                 className="w-52 h-20 bg-white border border-border-color rounded-lg flex items-center justify-center px-4 mx-4 shadow-sm hover:border-primary-blue hover:shadow-premium transition-all duration-300 shrink-0"
               >
                 <span className="font-black text-center text-sm leading-tight uppercase select-none" style={{ color: bank.color }}>
@@ -620,8 +620,8 @@ export default function Home() {
             ))}
             {/* Duplicated Set for infinite scroll marquee */}
             {partnerBanks.map((bank, idx) => (
-              <div 
-                key={`bank-2-${idx}`} 
+              <div
+                key={`bank-2-${idx}`}
                 className="w-52 h-20 bg-white border border-border-color rounded-lg flex items-center justify-center px-4 mx-4 shadow-sm hover:border-primary-blue hover:shadow-premium transition-all duration-300 shrink-0"
               >
                 <span className="font-black text-center text-sm leading-tight uppercase select-none" style={{ color: bank.color }}>
@@ -648,7 +648,7 @@ export default function Home() {
 
           <div className="flex flex-col gap-4">
             {faqs.map((faq, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="bg-white border border-border-color rounded-card overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
               >
@@ -659,14 +659,13 @@ export default function Home() {
                   <h3 className="font-bold text-base md:text-lg text-dark-blue pr-6">{faq.q}</h3>
                   <motion.div
                     animate={{ rotate: activeFaq === idx ? 180 : 0 }}
-                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
-                      activeFaq === idx ? "bg-primary-blue text-white" : "bg-primary-blue/8 text-primary-blue"
-                    }`}
+                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${activeFaq === idx ? "bg-primary-blue text-white" : "bg-primary-blue/8 text-primary-blue"
+                      }`}
                   >
                     <ChevronDown className="w-4 h-4" />
                   </motion.div>
                 </button>
-                
+
                 <AnimatePresence initial={false}>
                   {activeFaq === idx && (
                     <motion.div
@@ -699,23 +698,23 @@ export default function Home() {
             Our loan experts are here to help. Get free counseling and secure your capital today.
           </p>
           <div className="flex justify-center flex-wrap gap-4 mt-4">
-            <Link 
-              href="/apply" 
+            <Link
+              href="/apply"
               className="bg-white text-dark-blue px-8 py-3.5 font-bold text-sm rounded-btn shadow hover:-translate-y-0.5 transition-all duration-300"
             >
               Apply Now
             </Link>
-            <a 
-              href={whatsappLink} 
-              target="_blank" 
+            <a
+              href={whatsappLink}
+              target="_blank"
               rel="noopener noreferrer"
               className="bg-[#25D366] hover:bg-[#20ba5a] text-white px-8 py-3.5 font-bold text-sm rounded-btn shadow flex items-center gap-2 hover:-translate-y-0.5 transition-all duration-300"
             >
-              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.451 5.437.002 9.861-4.416 9.863-9.852.001-2.633-1.02-5.107-2.875-6.963C16.488 1.832 14.022.812 11.39.812 5.952.812 1.53 5.228 1.528 10.66c-.001 1.636.43 3.22 1.25 4.62l-.993 3.63 3.732-.979c1.378.75 2.919 1.157 4.54 1.159zm11.324-7.653c-.304-.152-1.802-.888-2.08-.989-.278-.101-.48-.152-.68.152-.2.304-.777.989-.953 1.19-.177.2-.354.228-.658.076-.304-.152-1.283-.473-2.443-1.507-.903-.805-1.512-1.8-1.69-2.103-.177-.304-.018-.468.13-.62.136-.136.304-.354.456-.531.152-.177.202-.304.304-.506.101-.202.051-.38-.025-.531-.076-.152-.68-1.643-.933-2.253-.247-.59-.498-.51-.68-.52-.177-.008-.38-.01-.58-.01-.2 0-.527.076-.803.38-.278.304-1.062 1.037-1.062 2.53s1.088 2.937 1.24 3.139c.152.202 2.144 3.274 5.19 4.588.724.311 1.29.497 1.73.637.727.231 1.39.198 1.912.12.583-.088 1.802-.737 2.055-1.45.253-.715.253-1.328.177-1.45-.076-.122-.278-.202-.582-.354z"/></svg> Open WhatsApp
-          </a>
+              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.45L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.451 5.437.002 9.861-4.416 9.863-9.852.001-2.633-1.02-5.107-2.875-6.963C16.488 1.832 14.022.812 11.39.812 5.952.812 1.53 5.228 1.528 10.66c-.001 1.636.43 3.22 1.25 4.62l-.993 3.63 3.732-.979c1.378.75 2.919 1.157 4.54 1.159zm11.324-7.653c-.304-.152-1.802-.888-2.08-.989-.278-.101-.48-.152-.68.152-.2.304-.777.989-.953 1.19-.177.2-.354.228-.658.076-.304-.152-1.283-.473-2.443-1.507-.903-.805-1.512-1.8-1.69-2.103-.177-.304-.018-.468.13-.62.136-.136.304-.354.456-.531.152-.177.202-.304.304-.506.101-.202.051-.38-.025-.531-.076-.152-.68-1.643-.933-2.253-.247-.59-.498-.51-.68-.52-.177-.008-.38-.01-.58-.01-.2 0-.527.076-.803.38-.278.304-1.062 1.037-1.062 2.53s1.088 2.937 1.24 3.139c.152.202 2.144 3.274 5.19 4.588.724.311 1.29.497 1.73.637.727.231 1.39.198 1.912.12.583-.088 1.802-.737 2.055-1.45.253-.715.253-1.328.177-1.45-.076-.122-.278-.202-.582-.354z" /></svg> Open WhatsApp
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </div>
   );
 }
