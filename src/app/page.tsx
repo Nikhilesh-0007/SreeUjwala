@@ -110,6 +110,9 @@ const partnerBankLogos = [
   { name: "Bajaj Finance", src: "/assets/banks/bajaj.png" },
   { name: "PNB Housing", src: "/assets/banks/pnb.png" },
   { name: "Tata Capital", src: "/assets/banks/tata.png" },
+  { name: "Canara Bank", src: "/assets/banks/canara.png" },
+  { name: "IDFC First", src: "/assets/banks/idfc.png" },
+  { name: "LIC HFL", src: "/assets/banks/lic.png" },
 ];
 
 export default function Home() {
@@ -220,27 +223,25 @@ export default function Home() {
       </section>
 
       {/* ── PARTNER WITH US ── */}
-      <section className="py-16 bg-gradient-to-br from-[#0B4F9F] via-[#1565C0] to-[#1E88E5]">
+      <section id="partner-banks" className="py-16 bg-gradient-to-br from-[#0B4F9F] via-[#1565C0] to-[#1E88E5]">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-2xl font-extrabold text-white mb-8 uppercase tracking-wide">
-            PARTNER WITH US.
+          <h2 className="text-2xl font-extrabold text-white mb-10 uppercase tracking-wide">
+            OUR PARTNER BANKS.
           </h2>
-          <div className="bg-white/15 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-8 max-w-3xl mx-auto">
-            <p className="text-lg md:text-xl font-bold text-white mb-8">
-              Partnered with 25+ Leading Banks &amp; NBFCs Across India...
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-6">
-              {partnerBankLogos.map((bank) => (
+          {/* Scrolling marquee strip */}
+          <div className="relative overflow-hidden">
+            <div className="animate-scroll-marquee">
+              {[...partnerBankLogos, ...partnerBankLogos].map((bank, i) => (
                 <div
-                  key={bank.name}
-                  className="h-10 flex items-center justify-center"
+                  key={i}
+                  className="w-44 h-20 bg-white rounded-xl flex items-center justify-center px-5 mx-3 shadow-md shrink-0"
                 >
                   <Image
                     src={bank.src}
                     alt={bank.name}
-                    width={90}
-                    height={40}
-                    className="object-contain max-h-10 w-auto"
+                    width={100}
+                    height={44}
+                    className="object-contain max-h-11 w-auto"
                   />
                 </div>
               ))}

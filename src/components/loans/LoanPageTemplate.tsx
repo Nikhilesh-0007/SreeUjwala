@@ -240,6 +240,14 @@ interface LoanPageTemplateProps {
 export default function LoanPageTemplate({ config }: LoanPageTemplateProps) {
   const [activeDocTab, setActiveDocTab] = useState<"salaried" | "self-employed">("salaried");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [activeSection, setActiveSection] = useState("overview");
+
+  // Scroll to top and reset tab whenever the loan page changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    setActiveSection("overview");
+    setOpenFaq(null);
+  }, [config.loanType]);
 
   // EMI Calculator States
   const [loanAmount, setLoanAmount] = useState(config.calcDefaultAmount);
@@ -262,8 +270,6 @@ export default function LoanPageTemplate({ config }: LoanPageTemplateProps) {
     { id: "faqs", label: "FAQs" }
   ];
 
-  // Set default active tab to "overview"
-  const [activeSection, setActiveSection] = useState("overview");
   const tabRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
   const tabContainerRef = useRef<HTMLDivElement>(null);
 
@@ -284,15 +290,15 @@ export default function LoanPageTemplate({ config }: LoanPageTemplateProps) {
     }
   };
 
-  // Scroll active tab button into view on mobile layout
+  // Scroll active tab BUTTON into horizontal view only when tab bar is already visible
   useEffect(() => {
     const activeBtn = tabRefs.current[activeSection];
-    if (activeBtn) {
-      activeBtn.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center"
-      });
+    const container = tabContainerRef.current;
+    if (!activeBtn || !container) return;
+    const rect = container.getBoundingClientRect();
+    // Only scroll the button into view if the tab bar is currently on screen
+    if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+      activeBtn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
     }
   }, [activeSection]);
 
@@ -354,8 +360,8 @@ export default function LoanPageTemplate({ config }: LoanPageTemplateProps) {
       <section className="relative overflow-hidden bg-gradient-to-r from-dark-blue to-[#0e3b6e] text-white py-20 px-6">
         {/* Background Decorative Pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-blue/30 via-transparent to-transparent pointer-events-none" />
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-          {/* Hero Left Content */}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative z-10">
+          {/* Hero Left Content — always renders first in DOM = first on mobile */}
           <div className="lg:col-span-7 flex flex-col gap-6 text-left">
             <div className="flex items-center gap-2 text-xs md:text-sm font-semibold text-white/70">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
@@ -364,14 +370,14 @@ export default function LoanPageTemplate({ config }: LoanPageTemplateProps) {
               <span>/</span>
               <span className="text-white font-bold">{config.loanType}</span>
             </div>
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: -15 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight"
             >
               {config.loanType}
             </motion.h1>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
@@ -391,8 +397,8 @@ export default function LoanPageTemplate({ config }: LoanPageTemplateProps) {
             </div>
           </div>
 
-          {/* Hero Right Form Container */}
-          <div className="lg:col-span-5 w-full" ref={topFormRef}>
+          {/* Hero Right Form — on mobile this appears BELOW the heading thanks to DOM order */}
+          <div className="lg:col-span-5 w-full mt-4 lg:mt-0" ref={topFormRef}>
             <QuickApplyForm loanType={config.loanType} />
           </div>
         </div>

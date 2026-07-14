@@ -45,45 +45,21 @@ export default function About() {
       </section>
 
       {/* Corporate Story */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-6 flex justify-center"
-          >
-            <svg viewBox="0 0 500 400" className="w-full max-w-[440px] drop-shadow-xl select-none">
-              <defs>
-                <linearGradient id="aboutGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#0B4F9F" />
-                  <stop offset="100%" stopColor="#1E88E5" />
-                </linearGradient>
-              </defs>
-              <rect x="20" y="20" width="460" height="360" rx="12" fill="url(#aboutGrad1)" />
-              <circle cx="250" cy="180" r="80" fill="#FFFFFF" opacity="0.1" />
-              <path d="M 120 380 L 120 280 L 380 280 L 380 380 Z" fill="#FFFFFF" opacity="0.05" />
-              
-              <g transform="translate(180, 100)">
-                <rect x="0" y="40" width="140" height="180" rx="8" fill="#FFFFFF" filter="drop-shadow(0 15px 30px rgba(0,0,0,0.1))" />
-                <rect x="20" y="60" width="25" height="25" rx="3" fill="#E2E8F0" />
-                <rect x="60" y="60" width="25" height="25" rx="3" fill="#E2E8F0" />
-                <rect x="95" y="60" width="25" height="25" rx="3" fill="#E2E8F0" />
-                <rect x="20" y="105" width="25" height="25" rx="3" fill="#E2E8F0" />
-                <rect x="60" y="105" width="25" height="25" rx="3" fill="#E2E8F0" />
-                <rect x="95" y="105" width="25" height="25" rx="3" fill="#E2E8F0" />
-                <rect x="50" y="160" width="40" height="60" rx="3" fill="#0B4F9F" />
-                <circle cx="70" cy="90" r="15" fill="#22C55E" opacity="0.1" />
-                <path d="M 65 90 L 68 93 L 75 86" stroke="#22C55E" strokeWidth="3" strokeLinecap="round" fill="none" />
-              </g>
-            </svg>
-          </motion.div>
+      <section className="relative py-24 overflow-hidden">
+        {/* Background image */}
+        <img
+          src="/about_backgound.png"
+          alt="About background"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-white/60" />
 
-          <motion.div 
+        <div className="relative z-10 max-w-7xl mx-auto px-6 flex justify-end">
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-6 flex flex-col gap-6"
+            className="max-w-xl bg-white/80 backdrop-blur-sm rounded-2xl p-8 flex flex-col gap-6"
           >
             <span className="font-extrabold text-xs text-primary-blue uppercase tracking-wider">EAZYKREDIT Advisory</span>
             <h2 className="text-3xl md:text-4xl font-bold text-dark-blue">Your Trusted Loan Partner Across India</h2>
