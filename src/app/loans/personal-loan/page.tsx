@@ -1,196 +1,221 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, CheckCircle2, ChevronRight, User } from "lucide-react";
-import QuickApplyForm from "@/components/QuickApplyForm";
+import React from "react";
+import LoanPageTemplate, { ProductConfig } from "@/components/loans/LoanPageTemplate";
+
+const personalLoanConfig: ProductConfig = {
+  loanType: "Personal Loan",
+  heroDescription: "Fulfill your urgent financial needs with our instant personal loans. Whether it's a medical emergency, dream vacation, or home renovation, get funds up to ₹75 Lakhs with zero collateral and paperless approval in minutes.",
+  interestRateText: "10.25% p.a.",
+  maxRepaymentTenure: "5 Years",
+  heroFeatures: [
+    "Competitive rates starting 10.25% p.a.",
+    "Loan amount up to ₹75 Lakhs (higher based on income)",
+    "Flexible tenure up to 5 years",
+    "Nominal processing fees 0.5% to 4%"
+  ],
+  whyChooseUsFeatures: [
+    {
+      title: "Quick Approval",
+      desc: "Get initial sanction checks from our partner banking portals within hours of file submission."
+    },
+    {
+      title: "Lowest Interest Rates",
+      desc: "Rate packages beginning at competitive pricing slabs customized on your credit reports."
+    },
+    {
+      title: "Digital Process",
+      desc: "Secure online documents upload with minimal physical interaction needed."
+    },
+    {
+      title: "Expert Guidance",
+      desc: "Dedicated financial advisors guide you through product comparisons and validation cycles."
+    },
+    {
+      title: "Secure Application",
+      desc: "Your data privacy is strictly protected with global bank-grade secure server encryptions."
+    },
+    {
+      title: "Multiple Bank Options",
+      desc: "Compare credit packages from over 25+ top public, private, and housing finance firms side-by-side."
+    }
+  ],
+  keyFeaturesList: [
+    "Interest Rates : 10.25% p.a. onwards",
+    "Loan Amounts : up to Rs 75 lakh depending on your income; some lenders may offer higher loan amounts",
+    "Tenure : up to 5 years (some lenders offer repayment period till 8 years)",
+    "Processing Fees : 0.5% to 4% of loan amount (may vary across lenders)"
+  ],
+  illustrationImage: "/assets/loans/personal-loan-feature.png",
+  eligibilityList: [
+    {
+      label: "Age Requirement",
+      value: "21 – 60 Years",
+      note: "Applicant must not exceed 60 years at loan maturity"
+    },
+    {
+      label: "Minimum Income",
+      value: "Salaried: ₹30,000 / month",
+      note: "Income criteria may vary by lender"
+    },
+    {
+      label: "Credit Score",
+      value: "750 & above",
+      note: "Higher scores improve approval chances & rates"
+    },
+    {
+      label: "Work Experience",
+      value: "1+ Years",
+      note: "With at least 1+ year of work experience"
+    }
+  ],
+  documentsList: [
+    "Passport Size Photo",
+    "Pan Card",
+    "Digital Aadhar Card",
+    "Latest 3 months salary slip",
+    "6 months Bank Statement (reflecting the salary credited)",
+    "Current Residence Address Proof (Utility Bill / Maintenance Bill / Rent Agreement & Light Bill with the owner’s name)",
+    "Form 16",
+    "Company ID Card / Offer Letter / Visiting Card",
+    "Registered Sale Deed, Allotment Letter or Stamped Agreement of Sale with the Builder (original document)",
+    "Receipts of the advance payments made towards the purchase of flat (original document)",
+    "Occupancy Certificate & Completion Certificate"
+  ],
+  timelineSteps: [
+    { title: "Apply Online", desc: "Submit basic personal and income parameters on our secure loan advisor portal." },
+    { title: "Document Verification", desc: "Upload clear digital copies of your KYC, salary slips, and bank statements." },
+    { title: "Eligibility Check", desc: "Our banking matching algorithms compare rates from 25+ lenders." },
+    { title: "Loan Approval", desc: "Receive the formal sanction letter containing approved terms from your chosen bank." },
+    { title: "Disbursement", desc: "The loan amount is direct-credited to your bank account." }
+  ],
+  calcMinAmount: 50000,
+  calcMaxAmount: 7500000,
+  calcDefaultAmount: 500000,
+  calcMinTenure: 1,
+  calcMaxTenure: 5,
+  calcDefaultTenure: 3,
+  calcDefaultRate: 10.25,
+  benefitsGrid: [
+    { title: "No Hidden Charges", desc: "Total clarity across validation processes, administrative fees, and loan metrics." },
+    { title: "Flexible Repayments", desc: "Structured repayment slabs designed comfortably over 1 to 5 years." },
+    { title: "Balance Transfer", desc: "Switch high-interest rate existing personal loans to low-rate lenders with zero hassle." }
+  ],
+  testimonials: [
+    {
+      name: "Aarav Sharma",
+      photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200",
+      rating: 5,
+      review: "EAZYKREDIT made my personal loan experience so simple! They found me a private bank offering 10.25% interest rate."
+    }
+  ],
+  faqs: [
+    {
+      q: "What credit score do I need to qualify for a personal loan?",
+      a: "A CIBIL score of 750 or above is recommended. While some lenders consider lower scores, a score of 750+ ensures immediate approvals and the lowest interest rates."
+    },
+    {
+      q: "What is the minimum salary required for obtaining a personal loan?",
+      a: "The minimum salary threshold is ₹30,000 per month. However, this may vary depending on the lender and your city of residence."
+    },
+    {
+      q: "If I have a pension account with a leading bank in India, can I apply for a personal loan as a pensioner?",
+      a: "Yes. Many leading banks offer specialized personal loan schemes for pensioners who draw their regular monthly pensions through their accounts."
+    },
+    {
+      q: "Are students eligible to apply for a personal loan?",
+      a: "Unsecured personal loans require a stable source of monthly income. Students without salary slips generally cannot qualify unless they have an earning co-applicant (like a parent) to co-sign."
+    },
+    {
+      q: "Can I secure a personal loan with a monthly salary of ₹12,000?",
+      a: "Standard prime lenders require a minimum salary of ₹25,000 to ₹30,000. For an income of ₹12,000, you might need to check with specialized microfinance lenders or local NBFCs."
+    },
+    {
+      q: "Must I offer collateral or security for a personal loan application?",
+      a: "No. EAZYKREDIT Personal Loans are entirely unsecured, meaning you do not need to pledge any gold, property, or assets as collateral."
+    },
+    {
+      q: "Can I utilize a personal loan for funding a wedding?",
+      a: "Yes. A personal loan has zero end-use restrictions. You can use it to cover wedding venues, catering, shopping, travel, or any other personal expenses."
+    },
+    {
+      q: "What is the maximum loan amount achievable through a personal loan?",
+      a: "You can secure a personal loan up to ₹75 Lakhs, depending on your income profile, repayment capacity, and credit score."
+    },
+    {
+      q: "Is it feasible to secure a personal loan without a salary slip?",
+      a: "Yes, if you are self-employed or run a registered business, you can qualify by providing your audited ITRs and bank statements instead of salary slips."
+    },
+    {
+      q: "How can I calculate the EMI for a personal loan?",
+      a: "You can easily calculate your monthly EMI using our online planning tool by entering your loan amount, interest rate, and preferred tenure."
+    },
+    {
+      q: "Are there any fees for prepaying my personal loan?",
+      a: "For floating-rate personal loans, RBI mandates zero prepayment charges. For fixed-rate personal loans, lenders may charge a prepayment fee of 2% to 4% of the outstanding principal."
+    },
+    {
+      q: "Is it possible to cancel a personal loan after the loan amount has been disbursed?",
+      a: "Once the loan amount is credited, it cannot be canceled. However, you can prepay the entire outstanding amount subject to the lender's foreclosure terms."
+    },
+    {
+      q: "Can I obtain a personal loan while already having a home loan?",
+      a: "Yes, provided you have sufficient repayment capacity and your overall Fixed Obligation to Income Ratio (FOIR) is within the lender's permissible limits."
+    },
+    {
+      q: "Can I take personal loans from two different banks concurrently?",
+      a: "Yes, you can apply to and secure loans from two different lenders concurrently, provided your monthly net income comfortably covers both EMI repayments."
+    }
+  ],
+  relatedProducts: [
+    { title: "Home Loan", desc: "Rates starting from 7.15% p.a.", link: "/loans/home-loan" },
+    { title: "Business Loan", desc: "Rates starting from 15.00% p.a.", link: "/loans/business-loan" }
+  ],
+  blogs: [],
+  overviewTitle: "Personal Loan",
+  overviewHeading: "Fulfill Your Urgent Cash Requirements",
+  overviewParagraphs: [
+    {
+      text: "Get an instant personal loan online with EAZYKREDIT to access funds quickly and conveniently. Whether you're planning a trip to your dream destination, renovating your home with modern furnishings, organising your dream wedding, or facing a medical emergency, an online Personal Loan from EAZYKREDIT will always be there to help you fulfill your requirements with competitive interest rates."
+    },
+    {
+      heading: "Why Choose EAZYKREDIT for the Personal Loan?",
+      text: "We connect you with India's premier lending partners, ensuring you receive the most suitable credit options. Simply compare and select the best personal loan in India based on your specific requirements. By choosing EAZYKREDIT, you experience a completely transparent, digital borrowing process with quick approvals, flexible structures, and dedicated advisor support."
+    }
+  ],
+  serviceBenefits: [
+    {
+      title: "Quick and Convenient Process",
+      desc: "Applying for an instant personal loan with EAZYKREDIT is a seamless and hassle-free experience. Our online platform allows you to complete the application conveniently from the comfort of your home."
+    },
+    {
+      title: "Competitive Interest Rates",
+      desc: "EAZYKREDIT offers personal loans with highly competitive interest rates, ensuring affordable monthly repayments."
+    },
+    {
+      title: "Flexible Loan Amounts",
+      desc: "Gain the flexibility to choose the personal loan amount that suits your requirements, whether a small cash injection or a larger sum."
+    },
+    {
+      title: "Quick Approval and Disbursement",
+      desc: "We value your time. Once your application is approved, the funds are disbursed directly to your account quickly, allowing you to address your financial needs without delay."
+    }
+  ],
+  interestRatesTable: [
+    { name: "Bajaj Finance", isNbfc: true, rate: "10.00% - 30.00%" },
+    { name: "Bank of Baroda", rate: "10.90% - 18.25%" },
+    { name: "Punjab National Bank", rate: "10.40% - 17.95%" },
+    { name: "State Bank of India", rate: "11.00% - 15.00%" },
+    { name: "ICICI Bank", rate: "9.99% - 17.00%" },
+    { name: "Tata Capital", isNbfc: true, rate: "10.99% - 16.00%" },
+    { name: "HDFC Bank", rate: "9.99% - 22.00%" },
+    { name: "IDFC FIRST Bank", rate: "9.99% - 24.00%" },
+    { name: "Axis Bank", rate: "9.99% - 22.00%" },
+    { name: "Canara Bank", rate: "10.95% - 16.15%" },
+    { name: "LIC HFL", isNbfc: true, rate: "10.50% - 15.00%" }
+  ]
+};
 
 export default function PersonalLoan() {
-  const [faqOpen, setFaqOpen] = useState<number | null>(null);
-
-  const toggleFaq = (idx: number) => {
-    setFaqOpen(faqOpen === idx ? null : idx);
-  };
-
-  return (
-    <div className="flex flex-col w-full bg-section-bg pb-24">
-      {/* Hero Header */}
-      <section className="bg-gradient-to-r from-dark-blue to-primary-blue text-white py-16">
-        <div className="max-w-7xl mx-auto px-6 text-center flex flex-col gap-4">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">Personal Loan</h1>
-          <div className="flex justify-center items-center gap-2 text-xs md:text-sm font-semibold text-white/70">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
-            <span>/</span>
-            <Link href="/#loans" className="hover:text-white transition-colors">Loans</Link>
-            <span>/</span>
-            <span className="text-white">Personal Loan</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Details Grid */}
-      <section className="max-w-7xl mx-auto w-full px-6 mt-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Content Column Left */}
-          <div className="lg:col-span-7 flex flex-col gap-8">
-            <motion.div 
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-white border border-border-color rounded-card p-6 md:p-8 shadow-premium flex flex-col gap-6"
-            >
-              <h2 className="text-2xl md:text-3xl font-extrabold text-dark-blue border-b border-border-color pb-3 flex items-center gap-3">
-                <User className="w-8 h-8 text-primary-blue shrink-0" />
-                Collateral-Free Capital
-              </h2>
-              <p className="text-text-gray font-medium leading-relaxed text-sm md:text-base">
-                Need immediate capital for home renovations, weddings, travel, or medical emergencies? EAZYKREDIT Personal Loans are collateral-free, requiring minimal paperwork with approvals and disbursals made within 24 hours. Rates starting from 10.49% p.a.
-              </p>
-
-              <h3 className="font-extrabold text-xl text-dark-blue mt-4">Benefits & Features</h3>
-              <ul className="flex flex-col gap-3">
-                {[
-                  { title: "No Security Required", desc: "No asset pledge, mortgage, or guarantor needed." },
-                  { title: "Super Fast Disbursal", desc: "Immediate online approval and cash transfer inside 24 hours." },
-                  { title: "Multi-bank Matching", desc: "Compare interest rate packages from 25+ top lenders side-by-side." },
-                  { title: "Flexible Repayment Cycle", desc: "Repayment cycles structured comfortably over 12 to 72 months." },
-                  { title: "High Capital Threshold", desc: "Secure funding up to ₹40 Lakhs based on your salary slip credentials." }
-                ].map((feat, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-text-gray leading-relaxed">
-                    <CheckCircle2 className="w-5 h-5 text-[#22C55E] shrink-0 mt-0.5" />
-                    <span><strong>{feat.title}:</strong> {feat.desc}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <h3 className="font-extrabold text-xl text-dark-blue mt-4">Eligibility Criteria</h3>
-              <div className="overflow-x-auto border border-border-color rounded-lg">
-                <table className="w-full text-xs md:text-sm text-left border-collapse">
-                  <thead>
-                    <tr className="bg-section-bg text-dark-blue font-bold border-b border-border-color">
-                      <th className="p-3">Parameters</th>
-                      <th className="p-3">Salaried Employees</th>
-                      <th className="p-3">Self-Employed Individuals</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b border-border-color">
-                      <td className="p-3 font-bold text-text-dark">Age Limit</td>
-                      <td className="p-3 text-text-gray">21 to 58 Years</td>
-                      <td className="p-3 text-text-gray">25 to 65 Years</td>
-                    </tr>
-                    <tr className="border-b border-border-color">
-                      <td className="p-3 font-bold text-text-dark">Minimum Net Income</td>
-                      <td className="p-3 text-text-gray">₹20,000 / Month</td>
-                      <td className="p-3 text-text-gray">₹3.6 Lakhs ITR / Year</td>
-                    </tr>
-                    <tr className="border-b border-border-color">
-                      <td className="p-3 font-bold text-text-dark">Credit Score</td>
-                      <td className="p-3 text-text-gray">720+ Recommended</td>
-                      <td className="p-3 text-text-gray">720+ Recommended</td>
-                    </tr>
-                    <tr>
-                      <td className="p-3 font-bold text-text-dark">Work History</td>
-                      <td className="p-3 text-text-gray">Min. 1 Year (6 Mos current job)</td>
-                      <td className="p-3 text-text-gray">Min. 2 Years active business</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <h3 className="font-extrabold text-xl text-dark-blue mt-4">Documents Required</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="border border-border-color p-5 rounded-lg flex flex-col gap-3 bg-section-bg/30">
-                  <h4 className="font-bold text-dark-blue text-sm border-b border-border-color pb-2">For Salaried</h4>
-                  <ul className="flex flex-col gap-2 text-xs text-text-gray leading-relaxed">
-                    <li className="flex gap-2">✓ PAN Card & Aadhaar Card</li>
-                    <li className="flex gap-2">✓ Past 3 Months Salary Slips</li>
-                    <li className="flex gap-2">✓ Past 3 Months Bank Statements</li>
-                    <li className="flex gap-2">✓ Form 16 Transcript</li>
-                  </ul>
-                </div>
-                
-                <div className="border border-border-color p-5 rounded-lg flex flex-col gap-3 bg-section-bg/30">
-                  <h4 className="font-bold text-dark-blue text-sm border-b border-border-color pb-2">For Self-Employed</h4>
-                  <ul className="flex flex-col gap-2 text-xs text-text-gray leading-relaxed">
-                    <li className="flex gap-2">✓ PAN Card & Aadhaar Card</li>
-                    <li className="flex gap-2">✓ 2 Years ITR Computations</li>
-                    <li className="flex gap-2">✓ Last 6 Months Savings/Current Statements</li>
-                    <li className="flex gap-2">✓ Active Business Address Registration</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Local FAQs */}
-              <h3 className="font-extrabold text-xl text-dark-blue mt-6">Personal Loan FAQs</h3>
-              <div className="flex flex-col gap-3">
-                {[
-                  {
-                    q: "Can I get a personal loan with a CIBIL score of 650?",
-                    a: "Yes. While a score of 720+ secures the lowest interest rates, EAZYKREDIT partners with multiple NBFCs that offer customized loans for profiles with slightly lower scores, provided you have a stable, verifiable monthly income."
-                  },
-                  {
-                    q: "Are there any restrictions on how I can spend the personal loan capital?",
-                    a: "No. Collateral-free personal loans carry zero usage restrictions. You can utilize the disbursed capital for any domestic need, including medical procedures, family weddings, educational fees, credit card consolidation, or travel."
-                  }
-                ].map((faq, idx) => (
-                  <div key={idx} className="border border-border-color rounded-lg overflow-hidden">
-                    <button
-                      onClick={() => toggleFaq(idx)}
-                      className="w-full text-left p-4 flex justify-between items-center cursor-pointer select-none bg-section-bg/30 hover:bg-section-bg/70"
-                    >
-                      <span className="font-bold text-sm text-dark-blue">{faq.q}</span>
-                      <motion.div animate={{ rotate: faqOpen === idx ? 180 : 0 }}>
-                        <ChevronDown className="w-4 h-4 text-primary-blue" />
-                      </motion.div>
-                    </button>
-                    <AnimatePresence>
-                      {faqOpen === idx && (
-                        <motion.div
-                          initial={{ height: 0 }}
-                          animate={{ height: "auto" }}
-                          exit={{ height: 0 }}
-                          className="overflow-hidden bg-white text-xs md:text-sm text-text-gray p-4 border-t border-border-color"
-                        >
-                          {faq.a}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Sticky Sidebar Right */}
-          <div className="lg:col-span-5 flex flex-col gap-6 sticky top-28">
-            <QuickApplyForm loanType="Personal Loan" />
-
-            {/* Related Loans */}
-            <div className="bg-[#071D3A] text-white p-6 rounded-card border border-white/5 shadow-premium flex flex-col gap-4">
-              <h3 className="font-bold text-base border-b border-white/10 pb-3">Related Loans</h3>
-              <div className="flex flex-col gap-3">
-                <Link href="/loans/car-loan" className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-all">
-                  <div className="flex flex-col">
-                    <span className="font-bold text-sm">Car Loan</span>
-                    <span className="text-[10px] text-[#B8C6D9]">Rates from 8.75%</span>
-                  </div>
-                  <ChevronRight className="w-4 h-4 text-primary-blue" />
-                </Link>
-
-                <Link href="/loans/business-loan" className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-all">
-                  <div className="flex flex-col">
-                    <span className="font-bold text-sm">Business Loan</span>
-                    <span className="text-[10px] text-[#B8C6D9]">Rates from 11.25%</span>
-                  </div>
-                  <ChevronRight className="w-4 h-4 text-primary-blue" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+  return <LoanPageTemplate config={personalLoanConfig} />;
 }

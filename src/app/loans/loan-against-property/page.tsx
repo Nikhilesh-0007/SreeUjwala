@@ -1,196 +1,241 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, CheckCircle2, ChevronRight, Building } from "lucide-react";
-import QuickApplyForm from "@/components/QuickApplyForm";
+import React from "react";
+import LoanPageTemplate, { ProductConfig } from "@/components/loans/LoanPageTemplate";
+
+const lapConfig: ProductConfig = {
+  loanType: "Loan Against Property",
+  heroDescription: "Unlock the value of your property with our high-value loan against property solutions. Get funding up to ₹25+ Crores for business expansion, education, or medical emergencies at attractive interest rates.",
+  interestRateText: "8.00% p.a.",
+  maxRepaymentTenure: "15 Years",
+  heroFeatures: [
+    "Interest Rates 8% p.a. onwards",
+    "Loan Amount Up to 85% property value",
+    "Tenure Up to 15 years",
+    "Processing Fees 0.5% - 2%"
+  ],
+  whyChooseUsFeatures: [
+    {
+      title: "Quick Approval",
+      desc: "Get initial sanction checks from our partner banking portals within hours of file submission."
+    },
+    {
+      title: "Lowest Interest Rates",
+      desc: "Rate packages beginning at competitive pricing slabs customized on your credit reports."
+    },
+    {
+      title: "Digital Process",
+      desc: "Secure online documents upload with minimal physical interaction needed."
+    },
+    {
+      title: "Expert Guidance",
+      desc: "Dedicated financial advisors guide you through product comparisons and validation cycles."
+    },
+    {
+      title: "Secure Application",
+      desc: "Your data privacy is strictly protected with global bank-grade secure server encryptions."
+    },
+    {
+      title: "Multiple Bank Options",
+      desc: "Compare credit packages from over 25+ top public, private, and housing finance firms side-by-side."
+    }
+  ],
+  keyFeaturesList: [
+    "Interest Rates : 8% p.a. onwards",
+    "Loan Amounts : up to 85% of the market value of your property (may vary across lenders)",
+    "Tenure : up to 15 years",
+    "Processing Fees : 0.5% – 2% of loan amount (may vary across lenders)"
+  ],
+  illustrationImage: "/assets/loans/lap-feature.png",
+  eligibilityList: [
+    {
+      label: "Property Type",
+      value: "Residential, Commercial and Industrial properties",
+      note: "Subject to technical evaluation"
+    },
+    {
+      label: "Age Requirement",
+      value: "21 – 65 Years",
+      note: "Applicant must not exceed 65 years at loan maturity"
+    },
+    {
+      label: "Minimum Income",
+      value: "Salaried: ₹25,000 / month | Self-Employed: ₹2 Lakh / annum",
+      note: "Income criteria may vary by lender"
+    },
+    {
+      label: "Credit Score",
+      value: "750 & above",
+      note: "Higher scores improve approval chances & rates"
+    },
+    {
+      label: "Eligible Applicants",
+      value: "Indian Residents, Non-Resident Indians (NRI)",
+      note: "Subject to lender guidelines"
+    },
+    {
+      label: "Work Experience",
+      value: "Salaried: 2 years minimum | Self-Employed: 3 years minimum",
+      note: "Active continuous vintage"
+    }
+  ],
+  documentsSalaried: [
+    "Individual KYC (Photo, Pan, Aadhar Card of all applicant & Co-applicants)",
+    "Utility Bill (Electricity Bill / Gas Bill)",
+    "Form 16/Bank statements (bank statements or passbook for last 6 months) or last 6 months salary slips/Income tax returns for last 3 years",
+    "Current job appointment letter (if more than 2 years have been spent in the same job)/Current employment certificate/Experience certificate",
+    "Property: Registered Sale Deed / Allotment Letter / Stamped Agreement of Sale with Builder / Share Certificate",
+    "Property approvals: Occupancy Certificate (OC) & Completion Certificate (CC)",
+    "NOC from Society / Builder"
+  ],
+  documentsSelfEmployed: [
+    "Individual KYC (Photo, PAN, Aadhaar Card of all Applicants & Co-applicants)",
+    "Utility Bill (Electricity Bill / Gas Bill)",
+    "Gumasta Licence (Proprietor)",
+    "Company PAN Card & Partnership Deed (Partnership Firm)",
+    "Company PAN Card, MOA, AOA, Certificate of Incorporation, List of Directors & Shareholding Pattern (Pvt. Ltd.)",
+    "Udyam Certificate",
+    "1 Year GST Return",
+    "Last 2 Years ITR of Company & Individual (CA Attested) – Acknowledgement, Computation of Income, Balance Sheet & Profit & Loss Account with Schedules",
+    "Last 12 Months Current Account Bank Statement",
+    "Last 6 Months Saving Account Bank Statement",
+    "Property: Registered Sale Deed / Allotment Letter / Stamped Agreement of Sale with Builder / Share Certificate",
+    "Property approvals: Occupancy Certificate (OC) & Completion Certificate (CC)",
+    "NOC from Society / Builder"
+  ],
+  timelineSteps: [
+    { title: "Apply Online", desc: "Submit basic personal and income parameters on our secure loan advisor portal." },
+    { title: "Document Verification", desc: "Upload clear digital copies of your KYC, property papers, and bank statements." },
+    { title: "Eligibility Check", desc: "Our banking matching algorithms compare rates from 25+ lenders." },
+    { title: "Loan Approval", desc: "Receive the formal sanction letter containing approved terms from your chosen bank." },
+    { title: "Disbursement", desc: "The loan amount is direct-credited to your bank account." }
+  ],
+  calcMinAmount: 500000,
+  calcMaxAmount: 50000000,
+  calcDefaultAmount: 2500000,
+  calcMinTenure: 1,
+  calcMaxTenure: 15,
+  calcDefaultTenure: 10,
+  calcDefaultRate: 8,
+  benefitsGrid: [
+    { title: "No Hidden Charges", desc: "Total clarity across validation processes, administrative fees, and loan metrics." },
+    { title: "Flexible Repayments", desc: "Structured repayment slabs designed comfortably over 1 to 15 years." },
+    { title: "Balance Transfer", desc: "Switch high-interest rate existing property loans to low-rate lenders with zero hassle." }
+  ],
+  testimonials: [
+    {
+      name: "Aarav Sharma",
+      photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200",
+      rating: 5,
+      review: "EAZYKREDIT made my Loan Against Property experience so simple! They found me a private bank offering 8.00% interest rate."
+    }
+  ],
+  faqs: [
+    {
+      q: "What is a loan against property?",
+      a: "A loan against property (LAP) is a secured loan where you pledge your residential, commercial, or industrial real estate asset as collateral to secure high-value funding."
+    },
+    {
+      q: "What property can be considered as collateral for LAP?",
+      a: "Residential houses, apartments, self-occupied or rented commercial premises, vacant plots, and industrial buildings can be placed as collateral, subject to clear title deeds and property valuations."
+    },
+    {
+      q: "If a property is jointly owned by me or an individual and his/her relative, can we take a loan against this property?",
+      a: "Yes. If a property is jointly owned, all co-owners must be co-applicants on the loan. This combines your income profiles and makes it easier to qualify."
+    },
+    {
+      q: "I am an NRI. Can I get a Loan Against Property?",
+      a: "Yes. Non-Resident Indians (NRIs) are eligible to apply for a Loan Against Property in India against property assets they own here, subject to RBI regulations."
+    },
+    {
+      q: "What is the maximum loan I can get against my property?",
+      a: "You can borrow up to ₹25+ Crores, generally representing 50% to 85% of the property's current market valuation, depending on the property type and your income documents."
+    },
+    {
+      q: "What are the loan tenure options?",
+      a: "Repayment tenures for a Loan Against Property are flexible and can extend up to 15 years, with some lenders offering up to 20 years."
+    },
+    {
+      q: "Can I get tax benefit on loan against property?",
+      a: "Yes, under Section 24(b) or Section 37(1), you can claim tax deductions if the loan proceeds are utilized for business expansion, buying a second home, or other qualifying investments."
+    },
+    {
+      q: "Is it important to have my account in the same bank that is disbursing my loan against property?",
+      a: "No. You do not need an existing account with the lender. You can set up standing instructions or ECS mandates on your active savings/current account with any bank."
+    },
+    {
+      q: "In how much time will the loan get disbursed?",
+      a: "Once property verification, technical valuation, and legal title checks are completed successfully, disbursement takes around 7 to 10 working days."
+    },
+    {
+      q: "How is a loan disbursed for an under-construction property?",
+      a: "For under-construction properties, the loan is disbursed in phases (tranches) linked to construction milestones certified by the project engineer."
+    },
+    {
+      q: "What is the difference between a home loan and a loan against property?",
+      a: "A Home Loan is specifically taken to purchase a new residential property. A Loan Against Property is taken by pledging an existing property you own, and the funds can be used for any personal or business purpose."
+    },
+    {
+      q: "Why should I choose LAP from EAZYKREDIT?",
+      a: "EAZYKREDIT compares offers from 25+ top lenders side-by-side. Our dedicated relationship managers assist you with property valuation, legal validation, and document processing, securing the lowest rates with total transparency."
+    }
+  ],
+  relatedProducts: [
+    { title: "Home Loan", desc: "Rates starting from 7.15% p.a.", link: "/loans/home-loan" },
+    { title: "Personal Loan", desc: "Rates starting from 10.49% p.a.", link: "/loans/personal-loan" }
+  ],
+  blogs: [],
+  overviewTitle: "Loan Against Property",
+  overviewHeading: "Unlock the Hidden Value of Your Assets",
+  overviewParagraphs: [
+    {
+      text: "Your property is more than just a valuable asset — it represents years of hard work, stability, and security. With a Loan Against Property from EAZYKREDIT, you can unlock the hidden potential of your property and use its value to fulfill your financial goals. Whether you need funds for business expansion, higher education, medical emergencies, or personal commitments, LAP provides you with substantial loan amounts at competitive interest rates."
+    },
+    {
+      text: "At EAZYKREDIT, we understand the importance of financial flexibility. That’s why we offer Loan Against Property solutions with attractive interest rates, flexible repayment options, and a smooth approval process. Turn your property into a powerful financial resource and move one step closer to achieving your dreams with confidence."
+    },
+    {
+      heading: "Why Choose EAZYKREDIT for the Loan Against Property?",
+      text: "EAZYKREDIT helps you unlock the true value of your property with a smooth, transparent, and customer-friendly loan process. We partner with leading banks and NBFCs to ensure you get the best interest rates, higher eligibility, and flexible repayment options tailored to your financial goals. Our team understands that every borrower’s requirement is different, and we work closely with you to structure the right solution. With dedicated relationship managers, quick approvals, and complete assistance from application to disbursal, EAZYKREDIT ensures a hassle-free experience. From property evaluation to documentation and final loan sanction, we manage everything efficiently so you can focus on your business or personal financial needs without stress."
+    }
+  ],
+  serviceBenefits: [
+    {
+      title: "Competitive Interest Rates",
+      desc: "Since LAP is a secured loan, lenders offer comparatively lower interest rates than personal loans or credit facilities. This helps reduce your overall borrowing cost and makes repayment more affordable over the long term."
+    },
+    {
+      title: "High Loan Amount",
+      desc: "Loan Against Property allows you to avail a higher loan amount compared to unsecured loans because it is backed by your residential or commercial property. Depending on the property value and eligibility, you can secure substantial funding to meet business expansion, education, medical, or personal financial requirements."
+    },
+    {
+      title: "Flexible Repayment Tenure",
+      desc: "One of the biggest advantages of LAP is the long repayment tenure, which can go up to 15–20 years. A longer tenure ensures smaller EMIs, making it easier to manage your monthly cash flow without financial pressure."
+    },
+    {
+      title: "Quick Processing & Approval",
+      desc: "With proper documentation and property papers, Loan Against Property can be processed efficiently. At EAZYKREDIT, we coordinate with lenders to ensure faster verification, smooth legal checks, and quicker sanction of your loan."
+    },
+    {
+      title: "Multipurpose Usage",
+      desc: "The loan amount received through LAP can be used for various purposes such as business expansion, working capital, education, wedding expenses, medical emergencies, or debt consolidation. There are generally no strict end-use restrictions, giving you financial flexibility."
+    }
+  ],
+  interestRatesTable: [
+    { name: "Bajaj Finance", isNbfc: true, rate: "8.00% - 18.00%" },
+    { name: "Bank of Baroda", rate: "9.00% - 9.75%" },
+    { name: "Punjab National Bank", rate: "8.75% - 13.00%" },
+    { name: "State Bank of India", rate: "9.20% - 10.00%" },
+    { name: "ICICI Bank", rate: "8.35% - 10.50%" },
+    { name: "Tata Capital", isNbfc: true, rate: "9.00% - 13.00%" },
+    { name: "HDFC Bank", rate: "8.50% - 10.50%" },
+    { name: "IDFC FIRST Bank", rate: "9.50% - 11.00%" },
+    { name: "Axis Bank", rate: "9.25% - 9.75%" },
+    { name: "Canara Bank", rate: "8.50% - 11.00%" },
+    { name: "LIC HFL", isNbfc: true, rate: "9.25% - 11.50%" }
+  ]
+};
 
 export default function LoanAgainstProperty() {
-  const [faqOpen, setFaqOpen] = useState<number | null>(null);
-
-  const toggleFaq = (idx: number) => {
-    setFaqOpen(faqOpen === idx ? null : idx);
-  };
-
-  return (
-    <div className="flex flex-col w-full bg-section-bg pb-24">
-      {/* Hero Header */}
-      <section className="bg-gradient-to-r from-dark-blue to-primary-blue text-white py-16">
-        <div className="max-w-7xl mx-auto px-6 text-center flex flex-col gap-4">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">Loan Against Property</h1>
-          <div className="flex justify-center items-center gap-2 text-xs md:text-sm font-semibold text-white/70">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
-            <span>/</span>
-            <Link href="/#loans" className="hover:text-white transition-colors">Loans</Link>
-            <span>/</span>
-            <span className="text-white">Loan Against Property</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Details Grid */}
-      <section className="max-w-7xl mx-auto w-full px-6 mt-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Content Column Left */}
-          <div className="lg:col-span-7 flex flex-col gap-8">
-            <motion.div 
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-white border border-border-color rounded-card p-6 md:p-8 shadow-premium flex flex-col gap-6"
-            >
-              <h2 className="text-2xl md:text-3xl font-extrabold text-dark-blue border-b border-border-color pb-3 flex items-center gap-3">
-                <Building className="w-8 h-8 text-primary-blue shrink-0" />
-                Unlock Property Value
-              </h2>
-              <p className="text-text-gray font-medium leading-relaxed text-sm md:text-base">
-                Leverage the residential, commercial, or industrial equity value of your property for low-cost secured funding. EAZYKREDIT helps you access maximum credit thresholds with long tenures and flexible repayments. Rates starting from 9.00% p.a.
-              </p>
-
-              <h3 className="font-extrabold text-xl text-dark-blue mt-4">Benefits & Features</h3>
-              <ul className="flex flex-col gap-3">
-                {[
-                  { title: "High Finance Ratio", desc: "Access funding up to 70% of your property's current market value." },
-                  { title: "Lower Interest Costs", desc: "Highly competitive interest rates starting at just 9.00% p.a." },
-                  { title: "Longer Repayment Tenures", desc: "Pay back comfortably with tenures extending up to 15 years." },
-                  { title: "Commercial & Residential Allowed", desc: "Mortgage residential houses, industrial plots, or commercial retail spaces." },
-                  { title: "Balance Transfer Facility", desc: "Easily shift high-rate active property loans to lower-cost lenders." }
-                ].map((feat, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-text-gray leading-relaxed">
-                    <CheckCircle2 className="w-5 h-5 text-[#22C55E] shrink-0 mt-0.5" />
-                    <span><strong>{feat.title}:</strong> {feat.desc}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <h3 className="font-extrabold text-xl text-dark-blue mt-4">Eligibility Criteria</h3>
-              <div className="overflow-x-auto border border-border-color rounded-lg">
-                <table className="w-full text-xs md:text-sm text-left border-collapse">
-                  <thead>
-                    <tr className="bg-section-bg text-dark-blue font-bold border-b border-border-color">
-                      <th className="p-3">Parameters</th>
-                      <th className="p-3">Salaried Individuals</th>
-                      <th className="p-3">Self-Employed / MSME</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b border-border-color">
-                      <td className="p-3 font-bold text-text-dark">Age Limit</td>
-                      <td className="p-3 text-text-gray">21 to 60 Years</td>
-                      <td className="p-3 text-text-gray">25 to 65 Years</td>
-                    </tr>
-                    <tr className="border-b border-border-color">
-                      <td className="p-3 font-bold text-text-dark">Minimum Net Income</td>
-                      <td className="p-3 text-text-gray">₹35,000 / Month</td>
-                      <td className="p-3 text-text-gray">₹4.0 Lakhs ITR / Year</td>
-                    </tr>
-                    <tr className="border-b border-border-color">
-                      <td className="p-3 font-bold text-text-dark">Credit Score</td>
-                      <td className="p-3 text-text-gray">700+ Preferred</td>
-                      <td className="p-3 text-text-gray">700+ Preferred</td>
-                    </tr>
-                    <tr>
-                      <td className="p-3 font-bold text-text-dark">Property Status</td>
-                      <td className="p-3 text-text-gray">Clear Title Deeds, No Dispute</td>
-                      <td className="p-3 text-text-gray">Clear Title Deeds, No Dispute</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <h3 className="font-extrabold text-xl text-dark-blue mt-4">Documents Required</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="border border-border-color p-5 rounded-lg flex flex-col gap-3 bg-section-bg/30">
-                  <h4 className="font-bold text-dark-blue text-sm border-b border-border-color pb-2">For Salaried</h4>
-                  <ul className="flex flex-col gap-2 text-xs text-text-gray leading-relaxed">
-                    <li className="flex gap-2">✓ PAN, Aadhaar & Salary Slips</li>
-                    <li className="flex gap-2">✓ 6 Months Salary Bank Statements</li>
-                    <li className="flex gap-2">✓ Form 16 & Past 2 Years ITR</li>
-                    <li className="flex gap-2">✓ Original Property Registry Deeds</li>
-                  </ul>
-                </div>
-                
-                <div className="border border-border-color p-5 rounded-lg flex flex-col gap-3 bg-section-bg/30">
-                  <h4 className="font-bold text-dark-blue text-sm border-b border-border-color pb-2">For Self-Employed</h4>
-                  <ul className="flex flex-col gap-2 text-xs text-text-gray leading-relaxed">
-                    <li className="flex gap-2">✓ PAN, Aadhaar & GST Registrations</li>
-                    <li className="flex gap-2">✓ 3 Years Audited Financial Files</li>
-                    <li className="flex gap-2">✓ Last 12 Months Current Bank Statements</li>
-                    <li className="flex gap-2">✓ Clear Property Layout Maps & NOC</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Local FAQs */}
-              <h3 className="font-extrabold text-xl text-dark-blue mt-6">Loan Against Property FAQs</h3>
-              <div className="flex flex-col gap-3">
-                {[
-                  {
-                    q: "What properties are accepted as collateral for LAP?",
-                    a: "Lenders accept fully constructed residential houses, commercial buildings, vacant plots with clear borders, and industrial land holdings. The property must carry clear, undisputed registry title deeds and approved construction certificates."
-                  },
-                  {
-                    q: "How does the LTV ratio vary between residential and commercial properties?",
-                    a: "Residential self-occupied properties command the highest LTV (up to 65% to 70%). Commercial offices and rented retail structures generally secure LTV margins of 50% to 60%, while vacant industrial plots carry caps around 40% to 50%."
-                  }
-                ].map((faq, idx) => (
-                  <div key={idx} className="border border-border-color rounded-lg overflow-hidden">
-                    <button
-                      onClick={() => toggleFaq(idx)}
-                      className="w-full text-left p-4 flex justify-between items-center cursor-pointer select-none bg-section-bg/30 hover:bg-section-bg/70"
-                    >
-                      <span className="font-bold text-sm text-dark-blue">{faq.q}</span>
-                      <motion.div animate={{ rotate: faqOpen === idx ? 180 : 0 }}>
-                        <ChevronDown className="w-4 h-4 text-primary-blue" />
-                      </motion.div>
-                    </button>
-                    <AnimatePresence>
-                      {faqOpen === idx && (
-                        <motion.div
-                          initial={{ height: 0 }}
-                          animate={{ height: "auto" }}
-                          exit={{ height: 0 }}
-                          className="overflow-hidden bg-white text-xs md:text-sm text-text-gray p-4 border-t border-border-color"
-                        >
-                          {faq.a}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Sticky Sidebar Right */}
-          <div className="lg:col-span-5 flex flex-col gap-6 sticky top-28">
-            <QuickApplyForm loanType="Loan Against Property" />
-
-            {/* Related Loans */}
-            <div className="bg-[#071D3A] text-white p-6 rounded-card border border-white/5 shadow-premium flex flex-col gap-4">
-              <h3 className="font-bold text-base border-b border-white/10 pb-3">Related Loans</h3>
-              <div className="flex flex-col gap-3">
-                <Link href="/loans/home-loan" className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-all">
-                  <div className="flex flex-col">
-                    <span className="font-bold text-sm">Home Loan</span>
-                    <span className="text-[10px] text-[#B8C6D9]">Rates from 8.40%</span>
-                  </div>
-                  <ChevronRight className="w-4 h-4 text-primary-blue" />
-                </Link>
-
-                <Link href="/loans/business-loan" className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-all">
-                  <div className="flex flex-col">
-                    <span className="font-bold text-sm">Business Loan</span>
-                    <span className="text-[10px] text-[#B8C6D9]">Rates from 11.25%</span>
-                  </div>
-                  <ChevronRight className="w-4 h-4 text-primary-blue" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+  return <LoanPageTemplate config={lapConfig} />;
 }

@@ -38,15 +38,15 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-sans bg-white text-text-dark">
         {/* Navigation Header */}
         <Header />
-        
+
         {/* Main Content Page Wrapper */}
         <main className="flex-grow pt-[105px]">
           {children}
         </main>
-        
+
         {/* Call & WhatsApp CTAs */}
         <FloatingActions />
-        
+
         {/* Footer */}
         <Footer />
       </body>

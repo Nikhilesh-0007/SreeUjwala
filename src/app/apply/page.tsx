@@ -342,7 +342,7 @@ function ApplyFormContent() {
                     </>
                   ) : (
                     <>
-                      Submit & Chat on WhatsApp
+                      Apply
                       <ChevronRight className="w-4 h-4" />
                     </>
                   )}

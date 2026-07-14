@@ -1,196 +1,262 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, CheckCircle2, ChevronRight, Home as HomeIcon, ShieldCheck } from "lucide-react";
-import QuickApplyForm from "@/components/QuickApplyForm";
+import React from "react";
+import LoanPageTemplate, { ProductConfig } from "@/components/loans/LoanPageTemplate";
+
+const homeLoanConfig: ProductConfig = {
+  loanType: "Home Loan",
+  heroDescription: "Fulfill your dream of owning a home with our tailor-made housing finance options. EAZYKREDIT offers a seamless digital process, competitive interest rates, and flexible repayment structures designed specifically for both salaried and self-employed applicants.",
+  interestRateText: "8.40% p.a.",
+  maxRepaymentTenure: "30 Years",
+  heroFeatures: [
+    "Rates starting from 8.40% p.a.",
+    "Funding up to 90% property value",
+    "Tenure options up to 30 years",
+    "Minimal processing fees starting 0.25%"
+  ],
+  whyChooseUsFeatures: [
+    {
+      title: "Quick Approval",
+      desc: "Get initial sanction checks from our partner banking portals within hours of file submission."
+    },
+    {
+      title: "Lowest Interest Rates",
+      desc: "Rate packages beginning at competitive pricing slabs customized on your credit reports."
+    },
+    {
+      title: "Digital Process",
+      desc: "Secure online documents upload with minimal physical interaction needed."
+    },
+    {
+      title: "Expert Guidance",
+      desc: "Dedicated financial advisors guide you through product comparisons and validation cycles."
+    },
+    {
+      title: "Secure Application",
+      desc: "Your data privacy is strictly protected with global bank-grade secure server encryptions."
+    },
+    {
+      title: "Multiple Bank Options",
+      desc: "Compare credit packages from over 25+ top public, private, and housing finance firms side-by-side."
+    }
+  ],
+  keyFeaturesList: [
+    "Interest Rates : 7.15% p.a. onwards",
+    "Loan Amounts : up to 85% - 100% of the property value",
+    "Tenure : up to 25 years (some lenders offer repayment period till 30 years)",
+    "Processing Fees : 0.25% to 1% of loan amount (may vary across lenders)",
+    "No Prepayment Penalty : Nil charges on foreclosure or part-payments of floating-rate loans",
+    "Balance Transfer : Seamless shifting of existing high-interest home loans to cheaper lenders"
+  ],
+  illustrationImage: "/assets/loans/home-loan-feature.png",
+  eligibilitySalaried: [
+    "Employment: Minimum 2 years of continuous work experience with 1 year at current employer.",
+    "Income: Net monthly salary of ₹25,000 or above.",
+    "Credit Profile: High CIBIL or credit score rating of 700+ is preferred.",
+    "Citizenship: Resident Indian or Non-Resident Indian (NRI) with valid passport."
+  ],
+  eligibilitySelfEmployed: [
+    "Business vintage: Minimum 3 years of active continuous operation in the same field.",
+    "Income: Annual gross receipts verified with minimum ITR of ₹3.0 Lakhs per year.",
+    "Credit Profile: Clean commercial credit rating and CIBIL score of 700+.",
+    "Citizenship: Resident Indian nationality."
+  ],
+  eligibilityParameters: [
+    { label: "Age Limit", salaried: "21 to 60 Years", selfEmployed: "21 to 65 Years" },
+    { label: "Minimum Net Income", salaried: "₹25,000 / Month", selfEmployed: "₹3.0 Lakhs ITR / Year" },
+    { label: "Credit Score", salaried: "700+ Preferred", selfEmployed: "700+ Preferred" },
+    { label: "Work Experience", salaried: "Min. 2 Years", selfEmployed: "Min. 3 Years business" }
+  ],
+  documentsSalaried: [
+    "KYC (Photo, Pan Card, Aadhar Card of Applicant & Co-applicant)",
+    "Latest 3 months’ Salary Slip",
+    "12 month bank statement (Reflecting the salary credited)",
+    "Utility Bill (Electricity Bill / Gas Bill)",
+    "2 year Form 16",
+    "Company ID Card / Offer Letter / Visiting Card",
+    "NOC from Society/Builder",
+    "A detailed estimate of the cost of construction of the house (Cost Sheet)",
+    "Registered Sale Deed, Allotment Letter or Stamped Agreement of Sale with the Builder (original document)",
+    "Receipts of the advance payments made towards the purchase of flat (original document)",
+    "Occupancy Certificate & Completion Certificate"
+  ],
+  documentsSelfEmployed: [
+    "Individual KYC (Photo, Pan, Aadhar Card of all applicant & Co-applicant)",
+    "Utility Bill (Electricity Bill)",
+    "Gumasta Licence (Proprietor), Company Pan Card/Partnership Deed (Partnership), Company Pan Card/MOA/AOA/Certificate of Incorporation, Shareholding & List of Director (Pvt. Ltd.)",
+    "Udyam Certificate",
+    "1 year GST return.",
+    "Last 2 years ITR of company and individual (Acknowledgement, Computation of Income, Balance Sheet & Profit & Loss Account with schedules, (If applicable 3CD & 3CB))",
+    "Last 12 months current account banking",
+    "Last 6 months saving account banking",
+    "NOC from Society/Builder",
+    "A detailed estimate of the cost of construction of the property (Cost Sheet)",
+    "Registered Sale Deed, Allotment Letter or Stamped Agreement of Sale with the Builder (original document)",
+    "Occupancy Certificate & Completion Certificate"
+  ],
+  timelineSteps: [
+    { title: "Apply Online", desc: "Submit basic personal and income parameters on our secure loan advisor portal." },
+    { title: "Document Verification", desc: "Upload clear digital copies of your KYC, salary slips, and bank statements." },
+    { title: "Eligibility Check", desc: "Our banking matching algorithms compare rates from 25+ lenders." },
+    { title: "Loan Approval", desc: "Receive the formal sanction letter containing approved terms from your chosen bank." },
+    { title: "Disbursement", desc: "The loan amount is direct-credited to the developer or seller account." }
+  ],
+  calcMinAmount: 500000,
+  calcMaxAmount: 100000000,
+  calcDefaultAmount: 5000000,
+  calcMinTenure: 1,
+  calcMaxTenure: 30,
+  calcDefaultTenure: 20,
+  calcDefaultRate: 8.5,
+  benefitsGrid: [
+    { title: "No Hidden Charges", desc: "Total clarity across validation processes, administrative fees, and loan metrics." },
+    { title: "Flexible Repayments", desc: "Structured repayment slabs designed comfortably over 1 to 30 years." },
+    { title: "Balance Transfer", desc: "Switch high-interest rate existing home loans to low-rate lenders with zero hassle." },
+    { title: "Top-up Loan", desc: "Secure additional emergency cash along with your mortgage home loan." },
+    { title: "Minimal Paperwork", desc: "Quick digital upload with full advisor support to organize paperwork." },
+    { title: "Fast Processing", desc: "Initial approvals in 48 hours for verified profiles." }
+  ],
+  testimonials: [
+    {
+      name: "Aarav Sharma",
+      photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200",
+      rating: 5,
+      review: "EAZYKREDIT made my home purchasing experience so simple! They found me a private bank offering 8.40% interest rate, and handled the paperwork digitally."
+    },
+    {
+      name: "Ananya Iyer",
+      photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200",
+      rating: 5,
+      review: "Outstanding support! I saved over ₹4 Lakhs on my home loan interest by using their balance transfer service."
+    }
+  ],
+  faqs: [
+    {
+      q: "What is a home loan?",
+      a: "A home loan is a secured credit facility offered by banks and housing finance companies to buy, build, or renovate a residential property. The property itself serves as collateral security until the loan is fully repaid."
+    },
+    {
+      q: "How much home loan amount can I get?",
+      a: "Your eligible loan amount depends on parameters like your monthly net income, age, credit score, outstanding liabilities, and the property's market value. Generally, lenders can fund up to 75% to 90% of the property value."
+    },
+    {
+      q: "I am an NRI, can I get a home loan?",
+      a: "Yes. Non-Resident Indians (NRIs), Persons of Indian Origin (PIOs), and Overseas Citizens of India (OCIs) are eligible to secure home loans in India to purchase residential properties, subject to RBI guidelines."
+    },
+    {
+      q: "How can I improve my home loan eligibility?",
+      a: "You can enhance eligibility by adding an earning co-applicant, maintaining a CIBIL score above 750, paying off existing short-term loans, declaring other stable income streams, or selecting a longer repayment tenure."
+    },
+    {
+      q: "Who can be co-applicants for a home loan?",
+      a: "Immediate family members like your spouse, parents, or siblings can co-apply. Co-ownership of the property usually requires the co-owners to be co-applicants, which also helps pool income to qualify for higher loan values."
+    },
+    {
+      q: "What are the reasons for my home loan application to get rejected?",
+      a: "Common rejection causes include a low CIBIL score (below 700), insufficient income compared to the loan size, unstable employment history, missing document proof, or negative legal/technical validation reports of the property."
+    },
+    {
+      q: "Can I take a top-up loan on my existing home loan?",
+      a: "Yes. If you have an active home loan with a clean repayment track record, most lenders allow you to borrow an additional top-up loan at interest rates comparable to regular home loans."
+    },
+    {
+      q: "In how much time will the home loan get disbursed?",
+      a: "After receiving the final loan sanction letter, the verification of property title deeds, legal reports, and valuation checks takes around 5 to 7 working days. Once verified, the disbursement is processed immediately."
+    },
+    {
+      q: "How is a loan disbursed for an under-construction property?",
+      a: "For under-construction properties, the loan is disbursed in parts (installments) matching construction milestones certified by the builder, rather than a single lump sum."
+    },
+    {
+      q: "What is Pre-EMI interest?",
+      a: "Pre-EMI is the monthly interest charged only on the partially disbursed loan amount during the construction phase of the property. Regular EMI payments covering both principal and interest start after complete disbursement."
+    },
+    {
+      q: "Is prepayment allowed in a home loan?",
+      a: "Yes. Per RBI regulations, banks cannot charge foreclosure or prepayment fees on floating-rate home loans. For fixed-rate loans, a nominal penalty of 1% to 2% may apply depending on individual bank terms."
+    },
+    {
+      q: "What are the general charges involved in a home loan?",
+      a: "General charges include processing fees (typically 0.25% to 1% of the loan amount), legal and valuation charges, stamp duties, MODT charges, and documentation handling fees."
+    },
+    {
+      q: "Why should I apply for a home loan through EAZYKREDIT?",
+      a: "EAZYKREDIT offers a completely digital process comparing premier lenders side-by-side. Our financial advisors provide expert guidance to secure the lowest interest rates with absolute transparency, zero agent commission fees, and dedicated relationship managers to manage documentation."
+    }
+  ],
+  relatedProducts: [
+    { title: "Loan Against Property", desc: "Rates starting from 9.00% p.a.", link: "/loans/loan-against-property" },
+    { title: "Business Loan", desc: "Rates starting from 11.25% p.a.", link: "/loans/business-loan" },
+    { title: "Personal Loan", desc: "Rates starting from 10.49% p.a.", link: "/loans/personal-loan" }
+  ],
+  blogs: [
+    {
+      title: "A Complete Guide to Home Loan Balance Transfer",
+      desc: "Learn how to transfer your active home loan to another bank with a lower interest rate to save lakhs of rupees.",
+      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=400",
+      link: "#"
+    },
+    {
+      title: "Understanding Home Loan Tax Benefits under Section 24 & 80C",
+      desc: "A comprehensive analysis of income tax deductions on home loan principal and interest components in India.",
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=400",
+      link: "#"
+    },
+    {
+      title: "First-Time Home Buyer Loan Checklist",
+      desc: "Every document, verification check, and validation report you need before applying for a housing loan.",
+      image: "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?auto=format&fit=crop&q=80&w=400",
+      link: "#"
+    }
+  ],
+  overviewTitle: "Housing Finance",
+  overviewHeading: "Fulfill Your Dream of Owning a Home",
+  overviewParagraphs: [
+    {
+      text: "A home is much more than brick and mortar—it is a personal sanctuary of comfort, love, and lasting memories. We understand how crucial finding the perfect home is. At EAZYKREDIT, we are committed to making homeownership attainable for everyone by matching you with the industry's lowest interest rates, helping you secure your dream space with absolute ease."
+    },
+    {
+      heading: "Why Choose EAZYKREDIT for the Home Loan?",
+      text: "By partnering with India's premier public and private banks, we guarantee direct access to top-tier home loan options. We customize our solutions to align with your unique needs—whether you require competitive interest rate slabs, flexible repayment terms, or maximum loan amounts. EAZYKREDIT offers a secure, reliable, and entirely transparent advisory experience to bring your home within reach."
+    }
+  ],
+  serviceBenefits: [
+    {
+      title: "Favorable Interest Slabs",
+      desc: "Access competitive interest rates customized to minimize your monthly EMI outflows."
+    },
+    {
+      title: "Tailored Loan Sizing",
+      desc: "Whether funding a modest apartment or a luxury villa, EAZYKREDIT offers adaptable loan sizes to suit your housing needs."
+    },
+    {
+      title: "Expedited Sanctions",
+      desc: "Time is vital. Our integrated banking portals ensure rapid approvals and smooth disbursements without unnecessary delays."
+    },
+    {
+      title: "Absolute Clarity",
+      desc: "Zero hidden charges, complete transparency of terms, and upfront disclosure of fee structures."
+    },
+    {
+      title: "Personal Advisory Desk",
+      desc: "Dedicated financial consultants guide you step-by-step through checking eligibility and compiling documents."
+    }
+  ],
+  interestRatesTable: [
+    { name: "Bajaj Finance", isNbfc: true, rate: "7.15 - 20%" },
+    { name: "Bank of Baroda", rate: "7.2 - 9%" },
+    { name: "Punjab National Bank", rate: "7.25 - 12%" },
+    { name: "State Bank of India", rate: "7.25 - 9%" },
+    { name: "ICICI Bank", rate: "7.5 - 9%" },
+    { name: "Tata Capital", isNbfc: true, rate: "7.5 - 10.75%" },
+    { name: "HDFC Bank", rate: "7.75 - 13.2%" },
+    { name: "IDFC FIRST Bank", rate: "7.75 - 10.5%" },
+    { name: "Axis Bank", rate: "7.99 - 9%" },
+    { name: "Canara Bank", rate: "8.40 - 11.25%" },
+    { name: "LIC HFL", isNbfc: true, rate: "8.45 - 10.75%" }
+  ]
+};
 
 export default function HomeLoan() {
-  const [faqOpen, setFaqOpen] = useState<number | null>(null);
-
-  const toggleFaq = (idx: number) => {
-    setFaqOpen(faqOpen === idx ? null : idx);
-  };
-
-  return (
-    <div className="flex flex-col w-full bg-section-bg pb-24">
-      {/* Hero Header */}
-      <section className="bg-gradient-to-r from-dark-blue to-primary-blue text-white py-16">
-        <div className="max-w-7xl mx-auto px-6 text-center flex flex-col gap-4">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">Home Loan</h1>
-          <div className="flex justify-center items-center gap-2 text-xs md:text-sm font-semibold text-white/70">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
-            <span>/</span>
-            <Link href="/#loans" className="hover:text-white transition-colors">Loans</Link>
-            <span>/</span>
-            <span className="text-white">Home Loan</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Details Grid */}
-      <section className="max-w-7xl mx-auto w-full px-6 mt-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Content Column Left */}
-          <div className="lg:col-span-7 flex flex-col gap-8">
-            <motion.div 
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-white border border-border-color rounded-card p-6 md:p-8 shadow-premium flex flex-col gap-6"
-            >
-              <h2 className="text-2xl md:text-3xl font-extrabold text-dark-blue border-b border-border-color pb-3 flex items-center gap-3">
-                <HomeIcon className="w-8 h-8 text-primary-blue shrink-0" />
-                Housing Finance Made Eazy
-              </h2>
-              <p className="text-text-gray font-medium leading-relaxed text-sm md:text-base">
-                Purchasing a home is one of the largest milestones in an individual's life. EAZYKREDIT's Home Loan advisory pairs you with optimal interest rates, helping you secure funds of up to 90% of the property value with long, comfortable tenures.
-              </p>
-
-              <h3 className="font-extrabold text-xl text-dark-blue mt-4">Benefits & Features</h3>
-              <ul className="flex flex-col gap-3">
-                {[
-                  { title: "Lowest Interest Rates", desc: "Rate packages starting from 8.40% p.a. based on your credit/CIBIL rating." },
-                  { title: "Long Term Repayment", desc: "Flexible loan tenures going up to 30 years." },
-                  { title: "Easy Balance Transfer", desc: "Move high-interest existing home loans to low-rate lenders with zero hassle." },
-                  { title: "Zero Prepayment Charges", desc: "Close your floating-rate home loans early without penalty." },
-                  { title: "Top-up Loan options", desc: "Secure additional unsecured emergency capital along with your home loan mortgage." }
-                ].map((feat, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-text-gray leading-relaxed">
-                    <CheckCircle2 className="w-5 h-5 text-[#22C55E] shrink-0 mt-0.5" />
-                    <span><strong>{feat.title}:</strong> {feat.desc}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <h3 className="font-extrabold text-xl text-dark-blue mt-4">Eligibility Criteria</h3>
-              <div className="overflow-x-auto border border-border-color rounded-lg">
-                <table className="w-full text-xs md:text-sm text-left border-collapse">
-                  <thead>
-                    <tr className="bg-section-bg text-dark-blue font-bold border-b border-border-color">
-                      <th className="p-3">Parameters</th>
-                      <th className="p-3">Salaried Profile</th>
-                      <th className="p-3">Self-Employed Profile</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b border-border-color">
-                      <td className="p-3 font-bold text-text-dark">Age Limit</td>
-                      <td className="p-3 text-text-gray">21 to 60 Years</td>
-                      <td className="p-3 text-text-gray">21 to 65 Years</td>
-                    </tr>
-                    <tr className="border-b border-border-color">
-                      <td className="p-3 font-bold text-text-dark">Minimum Net Income</td>
-                      <td className="p-3 text-text-gray">₹25,000 / Month</td>
-                      <td className="p-3 text-text-gray">₹3.0 Lakhs ITR / Year</td>
-                    </tr>
-                    <tr className="border-b border-border-color">
-                      <td className="p-3 font-bold text-text-dark">Credit Score</td>
-                      <td className="p-3 text-text-gray">700+ Preferred</td>
-                      <td className="p-3 text-text-gray">700+ Preferred</td>
-                    </tr>
-                    <tr>
-                      <td className="p-3 font-bold text-text-dark">Work Experience</td>
-                      <td className="p-3 text-text-gray">Min. 2 Years</td>
-                      <td className="p-3 text-text-gray">Min. 3 Years business</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <h3 className="font-extrabold text-xl text-dark-blue mt-4">Documents Required</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="border border-border-color p-5 rounded-lg flex flex-col gap-3 bg-section-bg/30">
-                  <h4 className="font-bold text-dark-blue text-sm border-b border-border-color pb-2">For Salaried</h4>
-                  <ul className="flex flex-col gap-2 text-xs text-text-gray leading-relaxed">
-                    <li className="flex gap-2">✓ PAN Card & Aadhaar Card</li>
-                    <li className="flex gap-2">✓ Last 3 Months Salary Slips</li>
-                    <li className="flex gap-2">✓ Last 6 Months Bank Statements</li>
-                    <li className="flex gap-2">✓ Form 16 & Last 2 Years ITR</li>
-                  </ul>
-                </div>
-                
-                <div className="border border-border-color p-5 rounded-lg flex flex-col gap-3 bg-section-bg/30">
-                  <h4 className="font-bold text-dark-blue text-sm border-b border-border-color pb-2">For Self-Employed</h4>
-                  <ul className="flex flex-col gap-2 text-xs text-text-gray leading-relaxed">
-                    <li className="flex gap-2">✓ PAN Card & Aadhaar Card</li>
-                    <li className="flex gap-2">✓ 3 Years Audited ITR Sheets</li>
-                    <li className="flex gap-2">✓ Last 12 Months Current Bank Statements</li>
-                    <li className="flex gap-2">✓ GST Returns & Business Vintage Certificate</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Local FAQs */}
-              <h3 className="font-extrabold text-xl text-dark-blue mt-6">Home Loan FAQs</h3>
-              <div className="flex flex-col gap-3">
-                {[
-                  {
-                    q: "What is the maximum loan-to-value (LTV) for home loans?",
-                    a: "For loans up to ₹30 Lakhs, banks can fund up to 90% of the property value. For loans between ₹30 Lakhs and ₹75 Lakhs, LTV is capped up to 80%. For loans above ₹75 Lakhs, banks finance up to 75% of the property market valuation."
-                  },
-                  {
-                    q: "Can I apply for a home loan with a co-applicant?",
-                    a: "Yes. Co-applying with close family members (spouses, parents, or siblings) is highly encouraged. It combines monthly income parameters, thereby increasing your eligible loan amount, and can secure lower rates if the co-applicant is a woman."
-                  }
-                ].map((faq, idx) => (
-                  <div key={idx} className="border border-border-color rounded-lg overflow-hidden">
-                    <button
-                      onClick={() => toggleFaq(idx)}
-                      className="w-full text-left p-4 flex justify-between items-center cursor-pointer select-none bg-section-bg/30 hover:bg-section-bg/70"
-                    >
-                      <span className="font-bold text-sm text-dark-blue">{faq.q}</span>
-                      <motion.div animate={{ rotate: faqOpen === idx ? 180 : 0 }}>
-                        <ChevronDown className="w-4 h-4 text-primary-blue" />
-                      </motion.div>
-                    </button>
-                    <AnimatePresence>
-                      {faqOpen === idx && (
-                        <motion.div
-                          initial={{ height: 0 }}
-                          animate={{ height: "auto" }}
-                          exit={{ height: 0 }}
-                          className="overflow-hidden bg-white text-xs md:text-sm text-text-gray p-4 border-t border-border-color"
-                        >
-                          {faq.a}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Sticky Sidebar Right */}
-          <div className="lg:col-span-5 flex flex-col gap-6 sticky top-28">
-            <QuickApplyForm loanType="Home Loan" />
-
-            {/* Related Loans */}
-            <div className="bg-[#071D3A] text-white p-6 rounded-card border border-white/5 shadow-premium flex flex-col gap-4">
-              <h3 className="font-bold text-base border-b border-white/10 pb-3">Related Loans</h3>
-              <div className="flex flex-col gap-3">
-                <Link href="/loans/loan-against-property" className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-all">
-                  <div className="flex flex-col">
-                    <span className="font-bold text-sm">Loan Against Property</span>
-                    <span className="text-[10px] text-[#B8C6D9]">Rates from 9.00%</span>
-                  </div>
-                  <ChevronRight className="w-4 h-4 text-primary-blue" />
-                </Link>
-
-                <Link href="/loans/business-loan" className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-all">
-                  <div className="flex flex-col">
-                    <span className="font-bold text-sm">Business Loan</span>
-                    <span className="text-[10px] text-[#B8C6D9]">Rates from 11.25%</span>
-                  </div>
-                  <ChevronRight className="w-4 h-4 text-primary-blue" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+  return <LoanPageTemplate config={homeLoanConfig} />;
 }

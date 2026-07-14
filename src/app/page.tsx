@@ -54,8 +54,87 @@ function Counter({ target, duration = 1.5 }: { target: number; duration?: number
   );
 }
 
+const bankLogos: { [key: string]: React.ReactNode } = {
+  "HDFC BANK": (
+    <img
+      src="/assets/banks/hdfc.png"
+      alt="HDFC Bank"
+      className="max-h-12 max-w-[85%] w-auto h-auto object-contain shrink-0"
+    />
+  ),
+  "STATE BANK OF INDIA": (
+    <img
+      src="/assets/banks/sbi.png"
+      alt="SBI"
+      className="max-h-12 max-w-[85%] w-auto h-auto object-contain shrink-0"
+    />
+  ),
+  "AXIS BANK": (
+    <img
+      src="/assets/banks/axis.png"
+      alt="Axis Bank"
+      className="max-h-12 max-w-[85%] w-auto h-auto object-contain shrink-0"
+    />
+  ),
+  "ICICI BANK": (
+    <img
+      src="/assets/banks/icici.png"
+      alt="ICICI Bank"
+      className="max-h-12 max-w-[85%] w-auto h-auto object-contain shrink-0"
+    />
+  ),
+  "CANARA BANK": (
+    <img
+      src="/assets/banks/canara.png"
+      alt="Canara Bank"
+      className="max-h-12 max-w-[85%] w-auto h-auto object-contain shrink-0"
+    />
+  ),
+  "BANK OF BARODA": (
+    <img
+      src="/assets/banks/bob.png"
+      alt="Bank of Baroda"
+      className="max-h-12 max-w-[85%] w-auto h-auto object-contain shrink-0"
+    />
+  ),
+  "IDFC FIRST": (
+    <img
+      src="/assets/banks/idfc.png"
+      alt="IDFC FIRST Bank"
+      className="max-h-12 max-w-[85%] w-auto h-auto object-contain shrink-0"
+    />
+  ),
+  "LIC HFL": (
+    <img
+      src="/assets/banks/lic.png"
+      alt="LIC HFL"
+      className="max-h-12 max-w-[85%] w-auto h-auto object-contain shrink-0"
+    />
+  ),
+  "TATA CAPITAL": (
+    <img
+      src="/assets/banks/tata.png"
+      alt="Tata Capital"
+      className="max-h-12 max-w-[85%] w-auto h-auto object-contain shrink-0"
+    />
+  ),
+  "BAJAJ FINANCE": (
+    <img
+      src="/assets/banks/bajaj.png"
+      alt="Bajaj Finance"
+      className="max-h-12 max-w-[85%] w-auto h-auto object-contain shrink-0"
+    />
+  ),
+  "PNB HOUSING": (
+    <img
+      src="/assets/banks/pnb.png"
+      alt="PNB Housing"
+      className="max-h-12 max-w-[85%] w-auto h-auto object-contain shrink-0"
+    />
+  )
+};
+
 export default function Home() {
-  const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
 
   const features = [
@@ -207,7 +286,6 @@ export default function Home() {
     { name: "CANARA BANK", color: "#0088CC" },
     { name: "BANK OF BARODA", color: "#F05A28" },
     { name: "IDFC FIRST", color: "#9C1F2E" },
-    { name: "KOTAK MAHINDRA", color: "#E61C24" },
     { name: "LIC HFL", color: "#00438F" },
     { name: "TATA CAPITAL", color: "#007788" },
     { name: "BAJAJ FINANCE", color: "#003366" },
@@ -215,29 +293,6 @@ export default function Home() {
   ];
 
 
-
-  const faqs = [
-    {
-      q: "What is a Loan DSA and how does EAZYKREDIT help?",
-      a: "A Direct Selling Agent (DSA) acts as an authorized referral partner for banks. EAZYKREDIT is a professional national DSA and loan advisor. We analyze your credit requirements and match you with the best rates from 25+ major partner banks, managing the entire application, document upload, and bank negotiation processes for you."
-    },
-    {
-      q: "Do I have to pay any service charge to EAZYKREDIT?",
-      a: "No. EAZYKREDIT provides completely free loan advisory services to borrowers. We receive our payouts directly from the banks and NBFCs upon successful disbursal of your loan. There are absolutely no hidden fees or charges for our consultations."
-    },
-    {
-      q: "What is the minimum credit score required for retail loans?",
-      a: "For home and personal loans, banks generally prefer a CIBIL score of 700 or above to offer the lowest interest rates. However, if your score is lower, our financial advisors can help structure your application with co-applicants or locate specialized NBFCs that offer loans with customized criteria."
-    },
-    {
-      q: "How long does the loan approval process take?",
-      a: "Unsecured loans like Personal and Business Loans can get sanctioned in 24 to 48 hours. Secured loans such as Home Loans and Loans Against Property require legal and technical evaluation of the properties, which usually takes 5 to 10 working days, depending on documentation."
-    },
-    {
-      q: "Can I transfer my existing high-interest loan to EAZYKREDIT's partner banks?",
-      a: "Yes. We specialize in Home Loan and LAP Balance Transfers. Our advisors will calculate the overall financial benefit of shifting your loan and coordinate the transition to a lower-interest lender, saving you substantial money over your loan tenure."
-    }
-  ];
 
   const whatsappLink = "https://wa.me/919885011157?text=Hello%20EAZYKREDIT%2C%20I%20would%20like%20to%20apply%20for%20a%20loan.";
 
@@ -257,7 +312,7 @@ export default function Home() {
             className="lg:col-span-7 flex flex-col gap-6"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-dark-blue leading-tight">
-              Get the Right Loan with India's <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B4F9F] to-[#1E88E5]">Trusted Banking Experts</span>
+              Get the Right Loan with <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B4F9F] to-[#1E88E5]">Your Trusted Loan Partner</span>
             </h1>
             <p className="text-text-gray text-lg md:text-xl font-medium leading-relaxed max-w-2xl">
               Helping individuals and businesses secure Home Loans, Business Loans, Personal Loans, Car Loans, Used Car Loans and Loan Against Property through India's leading Banks & NBFCs.
@@ -357,12 +412,12 @@ export default function Home() {
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
               className="absolute bottom-[20%] -right-4 md:-right-12 bg-white/95 backdrop-blur-md border border-border-color p-3 rounded-card shadow-premium flex items-center gap-3 z-20 hidden sm:flex"
             >
-              <div className="w-8 h-8 rounded-full bg-primary-blue/10 flex items-center justify-center font-bold text-sm text-primary-blue">
-                %
+              <div className="w-8 h-8 rounded-full bg-primary-blue/10 flex items-center justify-center">
+                <Building2 className="w-4 h-4 text-primary-blue" />
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-xs text-text-dark">8.40% p.a.</span>
-                <span className="text-[10px] text-text-gray">Lowest Rate Offer</span>
+                <span className="font-bold text-xs text-text-dark">25+ Lenders</span>
+                <span className="text-[10px] text-text-gray">Compare & Save</span>
               </div>
             </motion.div>
           </motion.div>
@@ -611,81 +666,24 @@ export default function Home() {
             {partnerBanks.map((bank, idx) => (
               <div
                 key={`bank-1-${idx}`}
-                className="w-52 h-20 bg-white border border-border-color rounded-lg flex items-center justify-center px-4 mx-4 shadow-sm hover:border-primary-blue hover:shadow-premium transition-all duration-300 shrink-0"
+                className="w-48 h-20 bg-white border border-border-color rounded-lg flex items-center justify-center px-6 mx-4 shadow-sm hover:border-primary-blue hover:shadow-premium transition-all duration-300 shrink-0"
               >
-                <span className="font-black text-center text-sm leading-tight uppercase select-none" style={{ color: bank.color }}>
-                  {bank.name}
-                </span>
+                {bankLogos[bank.name]}
               </div>
             ))}
             {/* Duplicated Set for infinite scroll marquee */}
             {partnerBanks.map((bank, idx) => (
               <div
                 key={`bank-2-${idx}`}
-                className="w-52 h-20 bg-white border border-border-color rounded-lg flex items-center justify-center px-4 mx-4 shadow-sm hover:border-primary-blue hover:shadow-premium transition-all duration-300 shrink-0"
+                className="w-48 h-20 bg-white border border-border-color rounded-lg flex items-center justify-center px-6 mx-4 shadow-sm hover:border-primary-blue hover:shadow-premium transition-all duration-300 shrink-0"
               >
-                <span className="font-black text-center text-sm leading-tight uppercase select-none" style={{ color: bank.color }}>
-                  {bank.name}
-                </span>
+                {bankLogos[bank.name]}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-
-      {/* 9. FAQ ACCORDION SECTION */}
-      <section className="py-24 bg-white" id="faqs">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16 flex flex-col gap-3">
-            <h2 className="text-3xl md:text-4xl font-bold text-dark-blue relative pb-3 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-16 after:h-[3px] after:bg-primary-blue">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-text-gray font-medium text-sm md:text-base">
-              Got questions about credit checks, interest calculations, or processing times? We have answers.
-            </p>
-          </div>
-
-          <div className="flex flex-col gap-4">
-            {faqs.map((faq, idx) => (
-              <div
-                key={idx}
-                className="bg-white border border-border-color rounded-card overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
-              >
-                <button
-                  onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
-                  className="w-full text-left p-6 flex justify-between items-center cursor-pointer select-none"
-                >
-                  <h3 className="font-bold text-base md:text-lg text-dark-blue pr-6">{faq.q}</h3>
-                  <motion.div
-                    animate={{ rotate: activeFaq === idx ? 180 : 0 }}
-                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${activeFaq === idx ? "bg-primary-blue text-white" : "bg-primary-blue/8 text-primary-blue"
-                      }`}
-                  >
-                    <ChevronDown className="w-4 h-4" />
-                  </motion.div>
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {activeFaq === idx && (
-                    <motion.div
-                      initial={{ height: 0 }}
-                      animate={{ height: "auto" }}
-                      exit={{ height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 pb-6 text-sm text-text-gray leading-relaxed border-t border-border-color/50 pt-4">
-                        {faq.a}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* 10. CALL TO ACTION SECTION */}
       <section className="py-24 bg-gradient-to-r from-dark-blue to-primary-blue text-white text-center relative overflow-hidden">

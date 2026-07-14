@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-12 border-b border-white/8">
         {/* About column */}
         <div className="flex flex-col gap-5">
-          <Logo className="h-24 w-auto" light={true} />
+          <Logo className="h-16 w-auto" light={true} />
           <p className="text-sm leading-relaxed">
             EAZYKREDIT is a premium financial consultancy and Loan DSA service across India. We work with leading banks and NBFCs to secure you the best-value credit packages.
           </p>
@@ -52,16 +52,6 @@ export default function Footer() {
             <li>
               <Link href="/about" className="hover:text-white hover:pl-1 transition-all flex items-center gap-2">
                 <span>→</span> About EAZYKREDIT
-              </Link>
-            </li>
-            <li>
-              <Link href="/calculators" className="hover:text-white hover:pl-1 transition-all flex items-center gap-2">
-                <span>→</span> Loan Calculators
-              </Link>
-            </li>
-            <li>
-              <Link href="/blogs" className="hover:text-white hover:pl-1 transition-all flex items-center gap-2">
-                <span>→</span> Financial Blogs
               </Link>
             </li>
             <li>

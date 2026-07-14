@@ -1,196 +1,210 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, CheckCircle2, ChevronRight, Building2 } from "lucide-react";
-import QuickApplyForm from "@/components/QuickApplyForm";
+import React from "react";
+import LoanPageTemplate, { ProductConfig } from "@/components/loans/LoanPageTemplate";
+
+const businessLoanConfig: ProductConfig = {
+  loanType: "Business Loan",
+  heroDescription: "Power your business growth with our collateral-free business loans. Ideal for MSMEs and established businesses needing quick capital for expansion, inventory, or working capital. EAZYKREDIT offers a seamless digital process, competitive interest rates, and flexible repayment options.",
+  interestRateText: "15.00% p.a.",
+  maxRepaymentTenure: "36 Months",
+  heroFeatures: [
+    "Interest rates starting at 15% p.a.",
+    "Loan amount ₹10 Lakhs - ₹10 Crore",
+    "Flexible tenure up to 36 months (extendable to 5 years)",
+    "Processing fees up to 2% of loan amount"
+  ],
+  whyChooseUsFeatures: [
+    {
+      title: "Quick Approval",
+      desc: "Get initial sanction checks from our partner banking portals within hours of file submission."
+    },
+    {
+      title: "Lowest Interest Rates",
+      desc: "Rate packages beginning at competitive pricing slabs customized on your credit reports."
+    },
+    {
+      title: "Digital Process",
+      desc: "Secure online documents upload with minimal physical interaction needed."
+    },
+    {
+      title: "Expert Guidance",
+      desc: "Dedicated financial advisors guide you through product comparisons and validation cycles."
+    },
+    {
+      title: "Secure Application",
+      desc: "Your data privacy is strictly protected with global bank-grade secure server encryptions."
+    },
+    {
+      title: "Multiple Bank Options",
+      desc: "Compare credit packages from over 25+ top public, private, and housing finance firms side-by-side."
+    }
+  ],
+  keyFeaturesList: [
+    "Interest Rates : 15% p.a. onwards",
+    "Loan Amounts : ₹10 Lakhs - ₹10 Crore",
+    "Tenure : up to 36 months (some lenders offer repayment period till 5 years)",
+    "Processing Fees : up to 2% of loan amount (may vary across lenders)"
+  ],
+  illustrationImage: "/assets/loans/business-loan-feature.png",
+  eligibilityList: [
+    {
+      label: "Age Requirement",
+      value: "18 – 65 Years",
+      note: "Applicant must not exceed 70 years at loan maturity"
+    },
+    {
+      label: "Minimum Income",
+      value: "Salaried: ₹25,000 / month | Self-Employed: ₹2 Lakh / annum",
+      note: "Income criteria may vary by lender"
+    },
+    {
+      label: "Credit Score",
+      value: "750 & above",
+      note: "Higher scores improve approval chances & rates"
+    },
+    {
+      label: "Eligible Applicants",
+      value: "Indian Residents, Non-Resident Indians (NRI), Persons of Indian Origin (PIOs)",
+      note: "Subject to lender terms"
+    },
+    {
+      label: "Work Experience",
+      value: "Salaried: 2 years minimum | Self-Employed: 3 years minimum",
+      note: "Vintage in active business"
+    }
+  ],
+  documentsList: [
+    "Individual KYC (Photo, Pan, Aadhar Card of all applicants and co-applicants)",
+    "Residence light bill of proprietor/all directors/all partners (If rented then rent agreement)",
+    "Permanent Address Proof",
+    "Business KYC (Company Pan Card, Udyam Certificate, Gumasta Certificate, GST Certificate, List of Directors & Shareholding Pattern, Partnership Deed, Certification of Incorporation)",
+    "MOA (Memorandum of Association) and AOA (Articles of Association)",
+    "Office light bill (If rented then rent agreement)",
+    "Latest 2 year Company ITR with audit report (CA Attested) (Acknowledgement, Computation of Income, Balance Sheet & Profit & Loss Account, 3CD, 3CB with schedules)",
+    "Latest 2 year ITR of all directors (CA Attested)",
+    "1 year GST return.",
+    "1 year current account statement.",
+    "All ongoing loans on company and individual name sanction letters.",
+    "Repayment track record of all ongoing loans.",
+    "Form 32 and Form 20B (if required)"
+  ],
+  timelineSteps: [
+    { title: "Apply Online", desc: "Submit basic personal and income parameters on our secure loan advisor portal." },
+    { title: "Document Verification", desc: "Upload clear digital copies of your KYC, business registration, and bank statements." },
+    { title: "Eligibility Check", desc: "Our banking matching algorithms compare rates from 25+ lenders." },
+    { title: "Loan Approval", desc: "Receive the formal sanction letter containing approved terms from your chosen bank." },
+    { title: "Disbursement", desc: "The loan amount is direct-credited to your business account." }
+  ],
+  calcMinAmount: 1000000,
+  calcMaxAmount: 100000000,
+  calcDefaultAmount: 5000000,
+  calcMinTenure: 1,
+  calcMaxTenure: 5,
+  calcDefaultTenure: 3,
+  calcDefaultRate: 15,
+  benefitsGrid: [
+    { title: "No Collateral Required", desc: "Unsecured business financing up to ₹75 Lakhs." },
+    { title: "Quick Sanction Time", desc: "Fast digital audit allows approvals within 48 hours." },
+    { title: "Flexible Repayment", desc: "Easy EMI programs structured over tenures of 12 to 60 months." },
+    { title: "Tax Deductions", desc: "Reclaimed interest paid on commercial business loans as tax-exempt deductions." },
+    { title: "Minimal Credit Score Bias", desc: "Access secondary NBFC lenders if prime banking CIBIL thresholds are not met." }
+  ],
+  testimonials: [
+    {
+      name: "Rajesh Mehta",
+      photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200",
+      rating: 5,
+      review: "EAZYKREDIT made my business loan experience so simple! They found me a private bank offering 15.00% interest rate."
+    }
+  ],
+  faqs: [
+    {
+      q: "What credit score is advisable for obtaining immediate business loans?",
+      a: "A CIBIL score of 750 or above is recommended. Higher credit scores demonstrate high reliability, helping you secure quicker approvals and the most competitive interest rates."
+    },
+    {
+      q: "What is the minimum annual turnover required to qualify for a startup loan?",
+      a: "While requirements vary by bank, traditional lenders typically prefer an annual turnover of ₹10 Lakhs to ₹20 Lakhs. EAZYKREDIT matches you with specialized NBFCs if you are an early-stage startup with lower turnover."
+    },
+    {
+      q: "How does GST impact business loans for startups?",
+      a: "A registered GST profile with regular filings provides a verifiable record of your business sales and vintage. Lenders rely on GST returns to assess your monthly turnover and compute your loan eligibility."
+    },
+    {
+      q: "How do I select the optimal repayment period for business loans?",
+      a: "The optimal period matches your business cash flow cycles. Shorter tenures (up to 24 months) minimize interest outflows, while longer tenures (up to 36 or 60 months) lower monthly EMI burdens."
+    },
+    {
+      q: "What are the fees for pre-closure and partial prepayment in business loans?",
+      a: "Unsecured business loans may have prepayment fees ranging from 2% to 5% of the outstanding principal amount, depending on the lender. EAZYKREDIT helps negotiate flexible foreclosure clauses upfront."
+    },
+    {
+      q: "Could you provide information about government-initiated loan programs?",
+      a: "EAZYKREDIT assists you in accessing government schemes like CGTMSE (collateral-free loans for MSMEs), Mudra Loans (up to ₹10 Lakhs for small micro-units), and Stand-Up India programs."
+    },
+    {
+      q: "I'm interested in commencing a dairy farming venture. How can I secure a small business loan of Rs. 10 lakhs?",
+      a: "You can secure a loan of Rs. 10 Lakhs under the Mudra Loan scheme (Kishor category) or dairy-specific farming credit programs. EAZYKREDIT will guide you in filing your project report and credentials."
+    }
+  ],
+  relatedProducts: [
+    { title: "Home Loan", desc: "Rates starting from 7.15% p.a.", link: "/loans/home-loan" },
+    { title: "Personal Loan", desc: "Rates starting from 10.49% p.a.", link: "/loans/personal-loan" }
+  ],
+  blogs: [],
+  overviewTitle: "Unsecured Business Loan",
+  overviewHeading: "Fulfill Your Corporate Ambitions",
+  overviewParagraphs: [
+    {
+      text: "In the journey of every business, securing funds is vital for growth and success. However, obtaining loans, especially unsecured business loans, can often feel like an insurmountable challenge. But fear not, because EAZYKREDIT Business Loan is here to support you. With our online business loan services, you can easily apply for a business loan, eliminating the hassle of visiting a bank in person."
+    },
+    {
+      heading: "Why Choose EAZYKREDIT for the Business Loan?",
+      text: "With our instant business loan facility, you can receive quick approvals and disbursements, ensuring that you have access to the capital you need without delays. Whether you require a loan for a new business, expansion, office renovation, or equipment purchases, we have you covered. EAZYKREDIT is recognized as one of the best advisors for business loans in India, coordinating the best unsecured business loans to support your growth. We believe in your vision and want to be your trusted partner on your entrepreneurial journey. So, whether you are starting a new business and need a startup loan or looking to take your existing one to new heights, apply for a business loan with EAZYKREDIT today. Experience a seamless borrowing experience with attractive benefits."
+    }
+  ],
+  serviceBenefits: [
+    {
+      title: "Unsecured Business Loan",
+      desc: "EAZYKREDIT offers unsecured business loans, eliminating the need for collateral and providing you with the funds you need without additional burden."
+    },
+    {
+      title: "Online Application",
+      desc: "With our user-friendly online platform, you can conveniently apply for a business loan from anywhere, saving you time and effort."
+    },
+    {
+      title: "Quick Approval and Disbursement",
+      desc: "We understand the urgency of your business needs. Our streamlined process ensures quick approval and disbursal of funds, allowing you to address your financial requirements promptly."
+    },
+    {
+      title: "Competitive Interest Rates",
+      desc: "EAZYKREDIT provides business loans with competitive interest rates, ensuring affordable repayments and helping you optimize your business cash flow."
+    },
+    {
+      title: "Flexible Loan Amounts",
+      desc: "Whether you require a small loan for your startup or a larger amount for business expansion, our business loan options offer flexibility in loan amounts to suit your specific needs."
+    },
+    {
+      title: "Business Loan Eligibility",
+      desc: "We have designed our business loan eligibility criteria to be inclusive, enabling both small businesses and startups to access the funds they require."
+    }
+  ],
+  interestRatesTable: [
+    { name: "Bajaj Finance", isNbfc: true, rate: "7.15 - 20%" },
+    { name: "Bank of Baroda", rate: "7.2 - 9%" },
+    { name: "Punjab National Bank", rate: "7.25 - 12%" },
+    { name: "State Bank of India", rate: "7.25 - 9%" },
+    { name: "ICICI Bank", rate: "7.5 - 9%" },
+    { name: "Tata Capital", isNbfc: true, rate: "7.5 - 10.75%" },
+    { name: "HDFC Bank", rate: "7.75 - 13.2%" },
+    { name: "IDFC FIRST Bank", rate: "7.75 - 10.5%" },
+    { name: "Axis Bank", rate: "7.99 - 9%" },
+    { name: "Canara Bank", rate: "8.40 - 11.25%" },
+    { name: "LIC HFL", isNbfc: true, rate: "8.45 - 10.75%" }
+  ]
+};
 
 export default function BusinessLoan() {
-  const [faqOpen, setFaqOpen] = useState<number | null>(null);
-
-  const toggleFaq = (idx: number) => {
-    setFaqOpen(faqOpen === idx ? null : idx);
-  };
-
-  return (
-    <div className="flex flex-col w-full bg-section-bg pb-24">
-      {/* Hero Header */}
-      <section className="bg-gradient-to-r from-dark-blue to-primary-blue text-white py-16">
-        <div className="max-w-7xl mx-auto px-6 text-center flex flex-col gap-4">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">Business Loan</h1>
-          <div className="flex justify-center items-center gap-2 text-xs md:text-sm font-semibold text-white/70">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
-            <span>/</span>
-            <Link href="/#loans" className="hover:text-white transition-colors">Loans</Link>
-            <span>/</span>
-            <span className="text-white">Business Loan</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Details Grid */}
-      <section className="max-w-7xl mx-auto w-full px-6 mt-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Content Column Left */}
-          <div className="lg:col-span-7 flex flex-col gap-8">
-            <motion.div 
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-white border border-border-color rounded-card p-6 md:p-8 shadow-premium flex flex-col gap-6"
-            >
-              <h2 className="text-2xl md:text-3xl font-extrabold text-dark-blue border-b border-border-color pb-3 flex items-center gap-3">
-                <Building2 className="w-8 h-8 text-primary-blue shrink-0" />
-                Corporate & MSME Capital
-              </h2>
-              <p className="text-text-gray font-medium leading-relaxed text-sm md:text-base">
-                EAZYKREDIT provides swift corporate finance and unsecured working capital loans designed to support micro, small, and medium enterprises (MSMEs). Avoid complex bank visits; we negotiate customized rates starting from 11.25% p.a. to help you manage seasonal demand or execute upgrades.
-              </p>
-
-              <h3 className="font-extrabold text-xl text-dark-blue mt-4">Benefits & Features</h3>
-              <ul className="flex flex-col gap-3">
-                {[
-                  { title: "No Collateral Required", desc: "Unsecured business financing up to ₹75 Lakhs." },
-                  { title: "Quick Sanction Time", desc: "Fast digital audit allows approvals within 48 hours." },
-                  { title: "Flexible Repayment", desc: "Easy EMI programs structured over tenures of 12 to 60 months." },
-                  { title: "Tax Deductions", desc: "Reclaimed interest paid on commercial business loans as tax-exempt deductions." },
-                  { title: "Minimal Credit Score Bias", desc: "Access secondary NBFC lenders if prime banking CIBIL thresholds are not met." }
-                ].map((feat, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-text-gray leading-relaxed">
-                    <CheckCircle2 className="w-5 h-5 text-[#22C55E] shrink-0 mt-0.5" />
-                    <span><strong>{feat.title}:</strong> {feat.desc}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <h3 className="font-extrabold text-xl text-dark-blue mt-4">Eligibility Criteria</h3>
-              <div className="overflow-x-auto border border-border-color rounded-lg">
-                <table className="w-full text-xs md:text-sm text-left border-collapse">
-                  <thead>
-                    <tr className="bg-section-bg text-dark-blue font-bold border-b border-border-color">
-                      <th className="p-3">Parameters</th>
-                      <th className="p-3">MSME / Proprietary Firms</th>
-                      <th className="p-3">Private Limited / Partnership</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b border-border-color">
-                      <td className="p-3 font-bold text-text-dark">Age Limit</td>
-                      <td className="p-3 text-text-gray">25 to 65 Years</td>
-                      <td className="p-3 text-text-gray">25 to 65 Years</td>
-                    </tr>
-                    <tr className="border-b border-border-color">
-                      <td className="p-3 font-bold text-text-dark">Annual Turnover</td>
-                      <td className="p-3 text-text-gray">Min. ₹15 Lakhs / Year</td>
-                      <td className="p-3 text-text-gray">Min. ₹25 Lakhs / Year</td>
-                    </tr>
-                    <tr className="border-b border-border-color">
-                      <td className="p-3 font-bold text-text-dark">Minimum ITR</td>
-                      <td className="p-3 text-text-gray">₹3.0 Lakhs / Year</td>
-                      <td className="p-3 text-text-gray">₹5.0 Lakhs / Year</td>
-                    </tr>
-                    <tr>
-                      <td className="p-3 font-bold text-text-dark">Business Vintage</td>
-                      <td className="p-3 text-text-gray">Min. 3 Years operating history</td>
-                      <td className="p-3 text-text-gray">Min. 3 Years operating history</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <h3 className="font-extrabold text-xl text-dark-blue mt-4">Documents Required</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="border border-border-color p-5 rounded-lg flex flex-col gap-3 bg-section-bg/30">
-                  <h4 className="font-bold text-dark-blue text-sm border-b border-border-color pb-2">For Proprietary / MSME</h4>
-                  <ul className="flex flex-col gap-2 text-xs text-text-gray leading-relaxed">
-                    <li className="flex gap-2">✓ PAN Card of Owner & Business</li>
-                    <li className="flex gap-2">✓ Aadhaar Card of Owner</li>
-                    <li className="flex gap-2">✓ Last 12 Months Current Bank Statements</li>
-                    <li className="flex gap-2">✓ GST Registration & Returns</li>
-                  </ul>
-                </div>
-                
-                <div className="border border-border-color p-5 rounded-lg flex flex-col gap-3 bg-section-bg/30">
-                  <h4 className="font-bold text-dark-blue text-sm border-b border-border-color pb-2">For Pvt Ltd / Partners</h4>
-                  <ul className="flex flex-col gap-2 text-xs text-text-gray leading-relaxed">
-                    <li className="flex gap-2">✓ Incorporation & GST Certificates</li>
-                    <li className="flex gap-2">✓ Partnership Deed / MOA & AOA</li>
-                    <li className="flex gap-2">✓ 3 Years Audited Financials & ITR</li>
-                    <li className="flex gap-2">✓ Last 12 Months Audited Bank Accounts</li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Local FAQs */}
-              <h3 className="font-extrabold text-xl text-dark-blue mt-6">Business Loan FAQs</h3>
-              <div className="flex flex-col gap-3">
-                {[
-                  {
-                    q: "What are the primary differences between secured and unsecured business loans?",
-                    a: "Unsecured business loans do not require any collateral or property pledge, offering faster sanctions but slightly higher rates. Secured business loans require asset mortgages (like land or machinery) which provides lower rates and much larger capital limits."
-                  },
-                  {
-                    q: "How does EAZYKREDIT calculate business eligibility?",
-                    a: "Eligibility is calculated based on annual sales turnover, business profitability history (ITR Computation), existing EMI obligations, and your corporate/promoter CIBIL rating."
-                  }
-                ].map((faq, idx) => (
-                  <div key={idx} className="border border-border-color rounded-lg overflow-hidden">
-                    <button
-                      onClick={() => toggleFaq(idx)}
-                      className="w-full text-left p-4 flex justify-between items-center cursor-pointer select-none bg-section-bg/30 hover:bg-section-bg/70"
-                    >
-                      <span className="font-bold text-sm text-dark-blue">{faq.q}</span>
-                      <motion.div animate={{ rotate: faqOpen === idx ? 180 : 0 }}>
-                        <ChevronDown className="w-4 h-4 text-primary-blue" />
-                      </motion.div>
-                    </button>
-                    <AnimatePresence>
-                      {faqOpen === idx && (
-                        <motion.div
-                          initial={{ height: 0 }}
-                          animate={{ height: "auto" }}
-                          exit={{ height: 0 }}
-                          className="overflow-hidden bg-white text-xs md:text-sm text-text-gray p-4 border-t border-border-color"
-                        >
-                          {faq.a}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Sticky Sidebar Right */}
-          <div className="lg:col-span-5 flex flex-col gap-6 sticky top-28">
-            <QuickApplyForm loanType="Business Loan" />
-
-            {/* Related Loans */}
-            <div className="bg-[#071D3A] text-white p-6 rounded-card border border-white/5 shadow-premium flex flex-col gap-4">
-              <h3 className="font-bold text-base border-b border-white/10 pb-3">Related Loans</h3>
-              <div className="flex flex-col gap-3">
-                <Link href="/loans/loan-against-property" className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-all">
-                  <div className="flex flex-col">
-                    <span className="font-bold text-sm">Loan Against Property</span>
-                    <span className="text-[10px] text-[#B8C6D9]">Rates from 9.00%</span>
-                  </div>
-                  <ChevronRight className="w-4 h-4 text-primary-blue" />
-                </Link>
-
-                <Link href="/loans/personal-loan" className="flex items-center justify-between p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 transition-all">
-                  <div className="flex flex-col">
-                    <span className="font-bold text-sm">Personal Loan</span>
-                    <span className="text-[10px] text-[#B8C6D9]">Rates from 10.49%</span>
-                  </div>
-                  <ChevronRight className="w-4 h-4 text-primary-blue" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+  return <LoanPageTemplate config={businessLoanConfig} />;
 }

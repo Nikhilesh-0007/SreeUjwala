@@ -6,7 +6,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '',
     '/about',
     '/calculators',
-    '/blogs',
     '/contact',
     '/apply',
     '/loans/home-loan',
@@ -20,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: route === '/blogs' ? 'weekly' : 'monthly',
+    changeFrequency: 'monthly',
     priority: route === '' ? 1.0 : route.startsWith('/loans') || route === '/apply' ? 0.9 : 0.8,
   }));
 }

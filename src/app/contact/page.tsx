@@ -27,13 +27,13 @@ export default function Contact() {
 
   const onSubmit = (data: ContactFormData) => {
     setIsSubmitting(true);
-    
+
     // Simulating API submit
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
       reset();
-      
+
       setTimeout(() => {
         setIsSuccess(false);
       }, 5000);
@@ -57,7 +57,7 @@ export default function Contact() {
       {/* Grid Content */}
       <section className="max-w-7xl mx-auto w-full px-6 mt-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
+
           {/* Details Column Left */}
           <div className="lg:col-span-5 flex flex-col gap-8">
             <div className="bg-white border border-border-color p-8 rounded-card shadow-premium flex flex-col gap-6">
@@ -73,7 +73,14 @@ export default function Contact() {
                   </div>
                   <div className="flex flex-col gap-0.5 text-sm">
                     <h4 className="font-bold text-dark-blue">Office Address</h4>
-                    <p className="text-text-gray leading-relaxed">Central Business District, BKC, Mumbai, MH - 400051</p>
+                    <a 
+                      href="https://www.google.com/maps?q=17.493736267089844,78.41146850585938&z=17&hl=en" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-text-gray hover:text-primary-blue leading-relaxed font-semibold transition-colors"
+                    >
+                      JNTU Road, Kukatpally, Hyderabad, Telangana - 500085
+                    </a>
                   </div>
                 </div>
 
@@ -131,12 +138,11 @@ export default function Contact() {
                     {/* Name */}
                     <div className="flex flex-col gap-2">
                       <label className="text-sm font-bold text-text-dark">Your Name *</label>
-                      <input 
-                        type="text" 
+                      <input
+                        type="text"
                         placeholder="Enter full name"
-                        className={`w-full px-4 py-3 rounded-btn border text-sm outline-none transition-all ${
-                          errors.name ? "border-red-500 focus:ring-4 focus:ring-red-100" : "border-border-color focus:border-primary-blue focus:ring-4 focus:ring-primary-blue/10"
-                        }`}
+                        className={`w-full px-4 py-3 rounded-btn border text-sm outline-none transition-all ${errors.name ? "border-red-500 focus:ring-4 focus:ring-red-100" : "border-border-color focus:border-primary-blue focus:ring-4 focus:ring-primary-blue/10"
+                          }`}
                         {...register("name")}
                       />
                       {errors.name && (
@@ -149,12 +155,11 @@ export default function Contact() {
                     {/* Phone */}
                     <div className="flex flex-col gap-2">
                       <label className="text-sm font-bold text-text-dark">Mobile Number *</label>
-                      <input 
-                        type="tel" 
+                      <input
+                        type="tel"
                         placeholder="10-digit number"
-                        className={`w-full px-4 py-3 rounded-btn border text-sm outline-none transition-all ${
-                          errors.phone ? "border-red-500 focus:ring-4 focus:ring-red-100" : "border-border-color focus:border-primary-blue focus:ring-4 focus:ring-primary-blue/10"
-                        }`}
+                        className={`w-full px-4 py-3 rounded-btn border text-sm outline-none transition-all ${errors.phone ? "border-red-500 focus:ring-4 focus:ring-red-100" : "border-border-color focus:border-primary-blue focus:ring-4 focus:ring-primary-blue/10"
+                          }`}
                         {...register("phone")}
                       />
                       {errors.phone && (
@@ -168,12 +173,11 @@ export default function Contact() {
                   {/* Email */}
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-bold text-text-dark">Email Address *</label>
-                    <input 
-                      type="email" 
+                    <input
+                      type="email"
                       placeholder="name@example.com"
-                      className={`w-full px-4 py-3 rounded-btn border text-sm outline-none transition-all ${
-                        errors.email ? "border-red-500 focus:ring-4 focus:ring-red-100" : "border-border-color focus:border-primary-blue focus:ring-4 focus:ring-primary-blue/10"
-                      }`}
+                      className={`w-full px-4 py-3 rounded-btn border text-sm outline-none transition-all ${errors.email ? "border-red-500 focus:ring-4 focus:ring-red-100" : "border-border-color focus:border-primary-blue focus:ring-4 focus:ring-primary-blue/10"
+                        }`}
                       {...register("email")}
                     />
                     {errors.email && (
@@ -186,12 +190,11 @@ export default function Contact() {
                   {/* Message */}
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-bold text-text-dark">Your Message *</label>
-                    <textarea 
+                    <textarea
                       rows={4}
                       placeholder="Write your query details here..."
-                      className={`w-full px-4 py-3 rounded-btn border text-sm outline-none resize-y transition-all ${
-                        errors.message ? "border-red-500 focus:ring-4 focus:ring-red-100" : "border-border-color focus:border-primary-blue focus:ring-4 focus:ring-primary-blue/10"
-                      }`}
+                      className={`w-full px-4 py-3 rounded-btn border text-sm outline-none resize-y transition-all ${errors.message ? "border-red-500 focus:ring-4 focus:ring-red-100" : "border-border-color focus:border-primary-blue focus:ring-4 focus:ring-primary-blue/10"
+                        }`}
                       {...register("message")}
                     />
                     {errors.message && (
@@ -238,16 +241,16 @@ export default function Contact() {
 
         {/* Google Map Panel */}
         <div className="mt-16 w-full overflow-hidden border border-border-color rounded-card shadow-premium h-[400px]">
-          {/* BKC Mumbai Google Maps Embed */}
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.442999616035!2d72.86244467599026!3d19.066228352264627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8e6dfd8487b%3A0xea2ee1c5e6bc90e9!2sBandra%20Kurla%20Complex%2C%20Bandra%20East%2C%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1714529329188!5m2!1sen!2sin" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen={false} 
-            loading="lazy" 
+          {/* Google Maps Embed */}
+          <iframe
+            src="https://maps.google.com/maps?q=17.493736267089844,78.41146850585938&z=17&output=embed&hl=en"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen={false}
+            loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="EAZYKREDIT BKC Office Map Location"
+            title="EAZYKREDIT Office Map Location"
           />
         </div>
       </section>

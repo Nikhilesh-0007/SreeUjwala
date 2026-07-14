@@ -188,7 +188,7 @@ export default function QuickApplyForm({ loanType }: QuickApplyFormProps) {
                   Submitting...
                 </>
               ) : (
-                "Apply & Chat on WhatsApp"
+                "Apply"
               )}
             </button>
           </motion.form>

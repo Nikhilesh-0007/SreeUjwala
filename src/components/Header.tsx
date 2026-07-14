@@ -62,7 +62,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto w-full px-6 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center">
-          <Logo className="h-20 w-auto" />
+          <Logo className="h-14 w-auto" />
         </Link>
 
         {/* Desktop Menu */}
@@ -136,47 +136,10 @@ export default function Header() {
           </div>
 
           <Link 
-            href="/calculators" 
-            className={`font-semibold text-sm transition-colors relative py-2 ${
-              isActive("/calculators") ? "text-primary-blue" : textClass
-            }`}
-          >
-            Calculators
-            {isActive("/calculators") && (
-              <motion.span 
-                layoutId="navUnderline" 
-                className="absolute bottom-0 left-0 w-full h-[2px] bg-primary-blue" 
-              />
-            )}
-          </Link>
-
-          <Link 
             href="/#partner-banks" 
             className={`font-semibold text-sm transition-colors py-2 ${textClass}`}
           >
             Partner Banks
-          </Link>
-
-          <Link 
-            href="/blogs" 
-            className={`font-semibold text-sm transition-colors relative py-2 ${
-              isActive("/blogs") ? "text-primary-blue" : textClass
-            }`}
-          >
-            Blogs
-            {isActive("/blogs") && (
-              <motion.span 
-                layoutId="navUnderline" 
-                className="absolute bottom-0 left-0 w-full h-[2px] bg-primary-blue" 
-              />
-            )}
-          </Link>
-
-          <Link 
-            href="/#faqs" 
-            className={`font-semibold text-sm transition-colors py-2 ${textClass}`}
-          >
-            FAQs
           </Link>
 
           <Link 
@@ -254,28 +217,10 @@ export default function Header() {
             </div>
 
             <Link 
-              href="/calculators" 
-              className={`font-semibold text-base py-1 ${isActive("/calculators") ? "text-primary-blue" : "text-text-dark"}`}
-            >
-              Calculators
-            </Link>
-            <Link 
               href="/#partner-banks" 
               className="font-semibold text-base py-1 text-text-dark"
             >
               Partner Banks
-            </Link>
-            <Link 
-              href="/blogs" 
-              className={`font-semibold text-base py-1 ${isActive("/blogs") ? "text-primary-blue" : "text-text-dark"}`}
-            >
-              Blogs
-            </Link>
-            <Link 
-              href="/#faqs" 
-              className="font-semibold text-base py-1 text-text-dark"
-            >
-              FAQs
             </Link>
             <Link 
               href="/contact" 
