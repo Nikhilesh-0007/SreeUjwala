@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Logo from "./Logo";
-import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Linkedin } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Youtube } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -91,14 +91,14 @@ export default function Footer() {
             <div>
               <h4 className="text-white font-bold text-sm mb-3 uppercase tracking-wider">Social Media</h4>
               <div className="flex gap-3">
-                <a href="#" aria-label="Facebook" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#1E88E5] transition-colors">
+                <a href="https://www.facebook.com/share/19337UrrLU/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#1E88E5] transition-colors">
                   <Facebook className="w-4 h-4" />
                 </a>
-                <a href="#" aria-label="Instagram" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#1E88E5] transition-colors">
+                <a href="https://www.instagram.com/eazykreditt?igsh=MXA2ZWFlM3podHlmcg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#1E88E5] transition-colors">
                   <Instagram className="w-4 h-4" />
                 </a>
-                <a href="#" aria-label="LinkedIn" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#1E88E5] transition-colors">
-                  <Linkedin className="w-4 h-4" />
+                <a href="https://youtube.com/@eazykredit?si=1IB1G-RwGgwprWVz" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#1E88E5] transition-colors">
+                  <Youtube className="w-4 h-4" />
                 </a>
               </div>
             </div>
