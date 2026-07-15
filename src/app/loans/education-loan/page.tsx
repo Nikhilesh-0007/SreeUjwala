@@ -48,7 +48,7 @@ const educationLoanConfig: ProductConfig = {
     "Processing Fees : 0.5% – 1% of loan amount (varies by lender)",
     "Collateral Requirement : Required for higher loan amounts (based on eligibility)"
   ],
-  illustrationImage: "/assets/loans/edu_loan.png",
+  illustrationImage: "/assets/loans/education.png",
   eligibilityList: [
     {
       label: "Student Age",

@@ -34,7 +34,7 @@ const loanProducts = [
     title: "Education Loans",
     desc: "Finance Higher Studies in India & Overseas",
     slug: "education-loan",
-    image: "/assets/loans/edu_loan.png",
+    image: "/assets/loans/education.png",
   },
   {
     title: "Used Car Loans",
