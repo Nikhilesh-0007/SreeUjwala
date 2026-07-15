@@ -15,10 +15,10 @@ export default function Logo({ className = "h-14 w-auto", light = false }: LogoP
       />
       <div className="flex flex-col select-none">
         <div className="flex items-baseline">
-          <span className={`font-extrabold text-2xl tracking-tight leading-none ${light ? 'text-white' : 'text-black'}`}>
+          <span className={`font-extrabold text-2xl tracking-tight leading-none ${light ? 'text-white' : 'text-dark-blue'}`}>
             Eazy
           </span>
-          <span className={`font-extrabold text-2xl tracking-tight leading-none ${light ? 'text-primary-blue' : 'text-dark-blue'}`}>
+          <span className={`font-extrabold text-2xl tracking-tight leading-none text-primary-blue`}>
             Kredit
           </span>
         </div>
