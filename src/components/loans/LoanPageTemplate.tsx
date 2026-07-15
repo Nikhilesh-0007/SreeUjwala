@@ -254,6 +254,20 @@ export default function LoanPageTemplate({ config }: LoanPageTemplateProps) {
   const [interestRate, setInterestRate] = useState<number | "">(config.calcDefaultRate);
   const [tenureMonths, setTenureMonths] = useState<number | "">(config.calcDefaultTenure * 12);
 
+  const [yearsInput, setYearsInput] = useState<string>(String(config.calcDefaultTenure));
+  const [monthsInput, setMonthsInput] = useState<string>("0");
+
+  // Keep text inputs synchronized when tenureMonths changes (e.g. from slider)
+  useEffect(() => {
+    if (tenureMonths !== "") {
+      setYearsInput(String(Math.floor(tenureMonths / 12)));
+      setMonthsInput(String(tenureMonths % 12));
+    } else {
+      setYearsInput("");
+      setMonthsInput("");
+    }
+  }, [tenureMonths]);
+
   // Handle manual input changes with clamping limits
   const handleAmountChange = (valStr: string) => {
     if (valStr === "") {
@@ -277,29 +291,35 @@ export default function LoanPageTemplate({ config }: LoanPageTemplateProps) {
   };
 
   const handleYearsChange = (valStr: string) => {
-    const currentMonthsOnly = tenureMonths === "" ? 0 : tenureMonths % 12;
-    if (valStr === "") {
-      setTenureMonths(currentMonthsOnly);
-      return;
-    }
-    const inputYears = Number(valStr);
-    const newTotalMonths = (inputYears * 12) + currentMonthsOnly;
+    setYearsInput(valStr);
+    const inputYears = valStr === "" ? 0 : Number(valStr);
+    const inputMonths = monthsInput === "" ? 0 : Number(monthsInput);
+    const newTotalMonths = (inputYears * 12) + inputMonths;
     const maxMonths = config.calcMaxTenure * 12;
     const clamped = Math.max(0, Math.min(newTotalMonths, maxMonths));
     setTenureMonths(clamped);
   };
 
-  const handleMonthsChange = (valStr: string) => {
-    const currentYearsOnly = tenureMonths === "" ? 0 : Math.floor(tenureMonths / 12);
-    if (valStr === "") {
-      setTenureMonths(currentYearsOnly * 12);
-      return;
+  const handleYearsBlur = () => {
+    if (tenureMonths !== "") {
+      setYearsInput(String(Math.floor(tenureMonths / 12)));
     }
-    const inputMonths = Number(valStr);
-    const newTotalMonths = (currentYearsOnly * 12) + inputMonths;
+  };
+
+  const handleMonthsChange = (valStr: string) => {
+    setMonthsInput(valStr);
+    const inputYears = yearsInput === "" ? 0 : Number(yearsInput);
+    const inputMonths = valStr === "" ? 0 : Number(valStr);
+    const newTotalMonths = (inputYears * 12) + inputMonths;
     const maxMonths = config.calcMaxTenure * 12;
     const clamped = Math.max(0, Math.min(newTotalMonths, maxMonths));
     setTenureMonths(clamped);
+  };
+
+  const handleMonthsBlur = () => {
+    if (tenureMonths !== "") {
+      setMonthsInput(String(tenureMonths % 12));
+    }
   };
 
   const [emi, setEmi] = useState(0);
@@ -884,8 +904,9 @@ export default function LoanPageTemplate({ config }: LoanPageTemplateProps) {
                               <input
                                 type="number"
                                 step="1"
-                                value={tenureMonths === "" ? "" : Math.floor(tenureMonths / 12)}
+                                value={yearsInput}
                                 onChange={(e) => handleYearsChange(e.target.value)}
+                                onBlur={handleYearsBlur}
                                 className="w-8 text-right font-extrabold outline-none border-none p-0 bg-transparent text-primary-blue [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                               />
                               <span className="ml-1 text-text-gray font-semibold text-[10px]">Yrs</span>
@@ -895,8 +916,9 @@ export default function LoanPageTemplate({ config }: LoanPageTemplateProps) {
                               <input
                                 type="number"
                                 step="1"
-                                value={tenureMonths === "" ? "" : tenureMonths % 12}
+                                value={monthsInput}
                                 onChange={(e) => handleMonthsChange(e.target.value)}
+                                onBlur={handleMonthsBlur}
                                 className="w-8 text-right font-extrabold outline-none border-none p-0 bg-transparent text-primary-blue [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                               />
                               <span className="ml-1 text-text-gray font-semibold text-[10px]">Mos</span>
