@@ -6,10 +6,10 @@ import LoanPageTemplate, { ProductConfig } from "@/components/loans/LoanPageTemp
 const usedCarLoanConfig: ProductConfig = {
   loanType: "Used Car Loan",
   heroDescription: "Already own a car but paying too much on your existing loan? EAZYKREDIT helps you refinance at a lower rate, reduce your monthly EMI, and free up cash — all through a fully digital, hassle-free process.",
-  interestRateText: "12.00% p.a.",
+  interestRateText: "Dynamic (Market Linked)",
   maxRepaymentTenure: "5 Years",
   heroFeatures: [
-    "Interest rates from 12% p.a.",
+    "Dynamic interest rates based on market trends",
     "Finance up to 90% of vehicle value",
     "Repayment tenure up to 5 years",
     "Processing fees from 0.5% to 2%"
@@ -41,7 +41,7 @@ const usedCarLoanConfig: ProductConfig = {
     }
   ],
   keyFeaturesList: [
-    "Interest Rates : From 12.00% p.a. — competitive rates for pre-owned vehicle financing",
+    "Interest Rates : Dynamic (Market Linked)",
     "Loan Coverage : 80%–90% of the vehicle's on-road price; up to 100% with select lenders",
     "Repayment Tenure : Up to 5 years; select lenders extend up to 7 years",
     "Processing Fees : 0.5% onwards of the sanctioned loan amount"
@@ -147,19 +147,37 @@ const usedCarLoanConfig: ProductConfig = {
     }
   ],
   relatedProducts: [
-    { title: "Home Loan", desc: "Rates starting from 7.15% p.a.", link: "/loans/home-loan" },
-    { title: "Personal Loan", desc: "Rates starting from 10.49% p.a.", link: "/loans/personal-loan" }
+    { title: "Home Loan", desc: "Dynamic (Market Linked)", link: "/loans/home-loan" },
+    { title: "Personal Loan", desc: "Dynamic (Market Linked)", link: "/loans/personal-loan" }
   ],
   blogs: [],
   overviewTitle: "Used Car Loan",
   overviewHeading: "Refinance Smarter, Pay Less Every Month",
   overviewParagraphs: [
     {
-      text: "A used car loan or car refinancing facility allows you to transfer your existing auto loan to a lender offering better rates and improved repayment terms. If your current EMI feels too high or your loan terms no longer suit your financial situation, refinancing can meaningfully reduce your monthly burden and improve your overall cash flow. At EAZYKREDIT, we make this transition simple by comparing offers from leading banks and NBFCs on your behalf."
+      text: "Drive home your dream car with EazyKredit Used Car Loan solutions. We make financing pre-owned vehicles simple, affordable, and convenient with competitive interest rates, quick approvals, and flexible repayment plans."
     },
     {
-      heading: "Why Choose EAZYKREDIT?",
-      text: "We carefully analyze your existing loan structure and compare multiple lender offers to identify the most beneficial refinancing option for your profile. Our team manages the entire process — from eligibility assessment and documentation to loan closure and transfer — so you don't have to deal with the complexity. With transparent guidance, faster lender coordination, and dedicated support at every step, EAZYKREDIT ensures a smooth and stress-free refinancing experience."
+      text: "Whether you're purchasing from an individual or a certified dealer, our experts help you secure the right financing with minimal paperwork and a seamless loan process."
+    },
+    {
+      heading: "Why Choose EazyKredit?",
+      text: "• Finance for a wide range of pre-owned vehicles"
+    },
+    {
+      text: "• Attractive interest rates from trusted lenders"
+    },
+    {
+      text: "• Fast approvals and quick loan disbursal"
+    },
+    {
+      text: "• Flexible repayment tenures"
+    },
+    {
+      text: "• Minimal documentation with expert assistance"
+    },
+    {
+      text: "Find the perfect used car and let us help you make it yours with confidence."
     }
   ],
   serviceBenefits: [

@@ -6,10 +6,10 @@ import LoanPageTemplate, { ProductConfig } from "@/components/loans/LoanPageTemp
 const lapConfig: ProductConfig = {
   loanType: "Loan Against Property",
   heroDescription: "Your property holds more value than you think. EAZYKREDIT helps you unlock it — with high-value funding up to ₹25+ Crores, competitive interest rates, and a transparent process backed by India's leading lenders.",
-  interestRateText: "8.00% p.a.",
+  interestRateText: "Dynamic (Market Linked)",
   maxRepaymentTenure: "15 Years",
   heroFeatures: [
-    "Interest rates from 8% p.a.",
+    "Dynamic interest rates based on market trends",
     "Up to 85% of property value funded",
     "Repayment tenure up to 15 years",
     "Processing fees 0.5% to 2%"
@@ -41,12 +41,12 @@ const lapConfig: ProductConfig = {
     }
   ],
   keyFeaturesList: [
-    "Interest Rates : From 8% p.a. — lower than most unsecured loan products",
+    "Interest Rates : Dynamic (Market Linked)",
     "Loan Coverage : Up to 85% of the property's current market value",
     "Repayment Tenure : Up to 15 years; select lenders extend up to 20 years",
     "Processing Fees : 0.5% to 2% of the sanctioned loan amount"
   ],
-  illustrationImage: "/assets/loans/lap-feature.png",
+  illustrationImage: "/assets/loans/loan_against property.png",
   eligibilityList: [
     {
       label: "Property Type",
@@ -181,19 +181,40 @@ const lapConfig: ProductConfig = {
     }
   ],
   relatedProducts: [
-    { title: "Home Loan", desc: "Rates starting from 7.15% p.a.", link: "/loans/home-loan" },
-    { title: "Personal Loan", desc: "Rates starting from 10.49% p.a.", link: "/loans/personal-loan" }
+    { title: "Home Loan", desc: "Dynamic (Market Linked)", link: "/loans/home-loan" },
+    { title: "Personal Loan", desc: "Dynamic (Market Linked)", link: "/loans/personal-loan" }
   ],
   blogs: [],
   overviewTitle: "Loan Against Property",
   overviewHeading: "Put Your Property to Work for You",
   overviewParagraphs: [
     {
-      text: "Your property is one of your most valuable assets — and with a Loan Against Property from EAZYKREDIT, you can leverage its value to meet your most important financial goals. Whether you need capital for business expansion, higher education, a medical emergency, or debt consolidation, LAP gives you access to substantial funding at interest rates far lower than unsecured loans. You retain ownership of your property throughout the loan tenure while unlocking its full financial potential."
+      text: "Unlock the hidden value of your property to meet your financial goals with EazyKredit Loan Against Property solutions. Whether you need funds for business expansion, medical emergencies, debt consolidation, or personal requirements, we help you secure high-value loans at competitive interest rates."
     },
     {
-      heading: "Why Choose EAZYKREDIT?",
-      text: "We partner with India's leading banks and NBFCs to ensure you receive the best interest rate, maximum eligibility, and the most flexible repayment structure for your specific situation. Our advisors understand that every borrower's requirement is different — and we work closely with you to structure the right solution. From property evaluation and documentation to legal verification and final disbursement, EAZYKREDIT manages the entire process so you can focus on what matters most."
+      text: "With simplified documentation, faster approvals, and flexible repayment options, you can access the funds you need while continuing to own and use your property."
+    },
+    {
+      text: "Offered collaterals can be Residential, Commercial, Industrial, Hostels, Schools, Hospitals, Lodge, Open Plot, Banquet Halls and Restaurants."
+    },
+    {
+      heading: "Why Choose EazyKredit?",
+      text: "• High loan amounts against residential or commercial properties"
+    },
+    {
+      text: "• Attractive interest rates from leading banks and NBFCs"
+    },
+    {
+      text: "• Flexible repayment tenures"
+    },
+    {
+      text: "• Quick processing with minimal documentation"
+    },
+    {
+      text: "• Dedicated loan experts for end-to-end assistance"
+    },
+    {
+      text: "Leverage your property's value to achieve your financial ambitions with confidence."
     }
   ],
   serviceBenefits: [

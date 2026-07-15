@@ -52,10 +52,10 @@ export default function About() {
             <span className="font-extrabold text-xs text-primary-blue uppercase tracking-wider">EAZYKREDIT Advisory</span>
             <h2 className="text-3xl md:text-4xl font-bold text-dark-blue">Your Trusted Loan Partner Across India</h2>
             <p className="text-text-gray font-medium leading-relaxed text-sm md:text-base">
-              Founded with the core goal of demystifying financial services, EAZYKREDIT acts as India's leading loan advisory and DSA platform. We resolve the core credit bottlenecks faced by individuals and corporate businesses alike.
+              EazyKredit is a trusted loan distribution partner dedicated to making financing simple, fast, and transparent. With 15+ years of Banking and NBFC expertise, we help individuals and businesses find the right loan solutions from leading Banks and NBFCs. From consultation to disbursement, our team provides personalized guidance, competitive loan options, and end-to-end support to ensure a smooth borrowing experience.
             </p>
             <p className="text-text-gray font-medium leading-relaxed text-sm md:text-base">
-              By connecting borrowers directly to 25+ premium public/private banks & NBFC partners, we leverage credit data and banking relations to structure favorable tenures, minimize transaction fees, and ensure speedy cash dispersal.
+              At EazyKredit, we don't just process loans—we help you make the right financial decisions with confidence.
             </p>
           </motion.div>
         </div>
@@ -75,7 +75,7 @@ export default function About() {
             </div>
             <h3 className="font-extrabold text-xl text-dark-blue">Our Mission</h3>
             <p className="text-text-gray text-sm leading-relaxed">
-              To enable financial progress across India by matching every customer with their ideal, low-cost credit solutions. We eliminate application errors, reduce high-interest burdens, and provide transparent advice to protect borrower interests.
+              At EazyKredit, our mission is to simplify the borrowing journey by connecting customers with the most suitable loan products from leading Banks and NBFCs. We are committed to providing transparent advice, quick processing, competitive loan options, and exceptional customer service while building long-term relationships based on trust, integrity, and excellence.
             </p>
           </motion.div>
 
@@ -90,7 +90,7 @@ export default function About() {
             </div>
             <h3 className="font-extrabold text-xl text-dark-blue">Our Vision</h3>
             <p className="text-text-gray text-sm leading-relaxed">
-              To become India's primary and most trusted digital gateway for retail mortgages and corporate MSME loans, fostering credit expansion through financial education, automated eligibility engines, and end-to-end relationship management.
+              To empower individuals and businesses with the right financial solutions, enabling them to achieve their dreams through seamless, ethical, and customer-first lending services
             </p>
           </motion.div>
         </div>

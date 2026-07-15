@@ -234,7 +234,7 @@ function ApplyFormContent() {
                       <option value="Business Loan">Business Loan</option>
                       <option value="Personal Loan">Personal Loan</option>
                       <option value="Loan Against Property">Loan Against Property</option>
-                      <option value="Car Loan">Car Loan</option>
+                      <option value="Education Loan">Education Loan</option>
                       <option value="Used Car Loan">Used Car Loan</option>
                     </select>
                     {errors.loanType && (

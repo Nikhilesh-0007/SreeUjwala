@@ -6,10 +6,10 @@ import LoanPageTemplate, { ProductConfig } from "@/components/loans/LoanPageTemp
 const homeLoanConfig: ProductConfig = {
   loanType: "Home Loan",
   heroDescription: "Your home is your most important investment. EAZYKREDIT connects you with India's top lenders to secure the most competitive home loan rates, transparent terms, and a fully digital process — so you can focus on finding the perfect home, not the paperwork.",
-  interestRateText: "8.40% p.a.",
+  interestRateText: "Dynamic (Market Linked)",
   maxRepaymentTenure: "30 Years",
   heroFeatures: [
-    "Interest rates from 8.40% p.a.",
+    "Dynamic interest rates based on market standards",
     "Up to 90% of property value funded",
     "Repayment tenure up to 30 years",
     "Processing fees as low as 0.25%"
@@ -41,7 +41,7 @@ const homeLoanConfig: ProductConfig = {
     }
   ],
   keyFeaturesList: [
-    "Interest Rates : Starting from 7.15% p.a. — among the lowest in the market",
+    "Interest Rates : Dynamic (Market Linked)",
     "Loan Coverage : Up to 85%–100% of the property's registered value",
     "Repayment Tenure : Up to 25 years; select lenders extend up to 30 years",
     "Processing Fees : 0.25% to 1% of the sanctioned loan amount",
@@ -185,9 +185,9 @@ const homeLoanConfig: ProductConfig = {
     }
   ],
   relatedProducts: [
-    { title: "Loan Against Property", desc: "Rates starting from 9.00% p.a.", link: "/loans/loan-against-property" },
-    { title: "Business Loan", desc: "Rates starting from 11.25% p.a.", link: "/loans/business-loan" },
-    { title: "Personal Loan", desc: "Rates starting from 10.49% p.a.", link: "/loans/personal-loan" }
+    { title: "Loan Against Property", desc: "Dynamic (Market Linked)", link: "/loans/loan-against-property" },
+    { title: "Business Loan", desc: "Dynamic (Market Linked)", link: "/loans/business-loan" },
+    { title: "Personal Loan", desc: "Dynamic (Market Linked)", link: "/loans/personal-loan" }
   ],
   blogs: [
     {
@@ -213,11 +213,29 @@ const homeLoanConfig: ProductConfig = {
   overviewHeading: "Own Your Home With Confidence",
   overviewParagraphs: [
     {
-      text: "Owning a home is one of life's most significant milestones — and the right financial partner makes all the difference. At EAZYKREDIT, we simplify the home loan journey by connecting you with India's leading banks and housing finance companies. Whether you are a first-time buyer, upgrading to a larger space, or constructing your own house, we ensure you get the most suitable loan at the lowest available rate."
+      text: "Turn your dream of owning a home into reality with EazyKredit hassle-free home loan solutions. We offer competitive interest rates, quick approvals, and flexible repayment options tailored to meet the needs of both salaried and self-employed individuals."
     },
     {
-      heading: "Why Choose EAZYKREDIT?",
-      text: "We go beyond just processing applications. Our advisors analyze your income profile, credit history, and property details to match you with the lender offering the best combination of rate, tenure, and eligibility. With access to 25+ banking partners, a fully digital process, and zero hidden charges, EAZYKREDIT delivers a home loan experience that is fast, transparent, and stress-free from start to finish."
+      text: "From choosing the right lender to final loan disbursement, our experts guide you through every step of the journey, ensuring a smooth, transparent, and stress-free experience."
+    },
+    {
+      heading: "Why Choose EazyKredit?",
+      text: "• Competitive interest rates from leading banks and NBFCs"
+    },
+    {
+      text: "• Quick eligibility assessment and fast loan processing"
+    },
+    {
+      text: "• Flexible repayment tenures up to 30 years"
+    },
+    {
+      text: "• Minimal documentation and expert assistance"
+    },
+    {
+      text: "• Personalized loan solutions based on your financial profile"
+    },
+    {
+      text: "Whether you're buying your first home, constructing a house, or purchasing a resale property, we're committed to helping you secure the right home loan with confidence."
     }
   ],
   serviceBenefits: [

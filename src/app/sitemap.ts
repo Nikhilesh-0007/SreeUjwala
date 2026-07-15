@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/loans/business-loan',
     '/loans/personal-loan',
     '/loans/loan-against-property',
-    '/loans/car-loan',
+    '/loans/education-loan',
     '/loans/used-car-loan',
   ];
 

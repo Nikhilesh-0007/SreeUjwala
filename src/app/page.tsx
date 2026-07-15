@@ -62,16 +62,15 @@ const loanProducts = [
     ),
   },
   {
-    title: "Car Loans",
-    desc: "Drive Home Your Dream Vehicle with Easy Financing",
-    slug: "car-loan",
+    title: "Education Loans",
+    desc: "Finance Higher Studies in India & Overseas",
+    slug: "education-loan",
     icon: (
       <svg viewBox="0 0 64 64" className="w-14 h-14">
-        <rect x="8" y="28" width="48" height="18" rx="6" fill="#1E88E5" opacity="0.12" stroke="#0B4F9F" strokeWidth="2" />
-        <path d="M14 28 L20 16 L44 16 L50 28 Z" fill="#E3F2FD" stroke="#0B4F9F" strokeWidth="2" />
-        <circle cx="20" cy="46" r="7" fill="#E3F2FD" stroke="#0B4F9F" strokeWidth="2" />
-        <circle cx="44" cy="46" r="7" fill="#E3F2FD" stroke="#0B4F9F" strokeWidth="2" />
-        <rect x="26" y="18" width="12" height="8" rx="1" fill="#1E88E5" opacity="0.4" />
+        <path d="M32 10 L58 22 L32 34 L6 22 Z" fill="#1E88E5" opacity="0.12" stroke="#0B4F9F" strokeWidth="2.5" />
+        <path d="M14 26 L14 42 C14 48, 50 48, 50 42 L50 26" fill="none" stroke="#0B4F9F" strokeWidth="2.5" strokeLinecap="round" />
+        <path d="M48 22 L48 38" stroke="#0B4F9F" strokeWidth="2" strokeLinecap="round" fill="none" />
+        <circle cx="48" cy="38" r="2.5" fill="#1E88E5" />
       </svg>
     ),
   },

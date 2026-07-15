@@ -6,10 +6,10 @@ import LoanPageTemplate, { ProductConfig } from "@/components/loans/LoanPageTemp
 const personalLoanConfig: ProductConfig = {
   loanType: "Personal Loan",
   heroDescription: "When life demands quick funds, EAZYKREDIT delivers. Get a collateral-free personal loan with zero asset pledge, minimal paperwork, and same-day approval — whether it's a medical emergency, home renovation, wedding, or travel.",
-  interestRateText: "10.25% p.a.",
+  interestRateText: "Dynamic (Market Linked)",
   maxRepaymentTenure: "5 Years",
   heroFeatures: [
-    "Interest rates from 10.25% p.a.",
+    "Dynamic interest rates based on market standards",
     "Loan amounts up to ₹75 Lakhs",
     "Repayment tenure up to 5 years",
     "Processing fees between 0.5% and 4%"
@@ -41,12 +41,12 @@ const personalLoanConfig: ProductConfig = {
     }
   ],
   keyFeaturesList: [
-    "Interest Rates : From 10.25% p.a. — based on your income and credit profile",
+    "Interest Rates : Dynamic (based on income & credit profile)",
     "Loan Amounts : Up to ₹75 Lakhs; higher amounts available for strong income profiles",
     "Repayment Tenure : Up to 5 years; select lenders extend up to 8 years",
     "Processing Fees : 0.5% to 4% of the sanctioned loan amount"
   ],
-  illustrationImage: "/assets/loans/personal-loan-feature.png",
+  illustrationImage: "/assets/loans/personal_loan.jpeg",
   eligibilityList: [
     {
       label: "Age Requirement",
@@ -165,19 +165,37 @@ const personalLoanConfig: ProductConfig = {
     }
   ],
   relatedProducts: [
-    { title: "Home Loan", desc: "Rates starting from 7.15% p.a.", link: "/loans/home-loan" },
-    { title: "Business Loan", desc: "Rates starting from 15.00% p.a.", link: "/loans/business-loan" }
+    { title: "Home Loan", desc: "Dynamic (Market Linked)", link: "/loans/home-loan" },
+    { title: "Business Loan", desc: "Dynamic (Market Linked)", link: "/loans/business-loan" }
   ],
   blogs: [],
   overviewTitle: "Personal Loan",
   overviewHeading: "Fast Funds for Every Life Moment",
   overviewParagraphs: [
     {
-      text: "Life doesn't always follow a plan — and neither should your access to funds. Whether you're dealing with an unexpected medical expense, planning a destination wedding, renovating your home, or consolidating existing debt, a personal loan from EAZYKREDIT gives you instant access to the capital you need without pledging any asset. Our fully digital process means you can apply, get approved, and receive funds — all without stepping into a bank."
+      text: "Life is full of opportunities and unexpected expenses. EazyKredit Personal Loan solutions provide instant financial support without the need for collateral. Whether you're planning a wedding, funding a vacation, covering medical expenses, renovating your home, education or managing emergencies, we help you access funds quickly and conveniently."
     },
     {
-      heading: "Why Choose EAZYKREDIT?",
-      text: "We compare personal loan offers from India's top banks and NBFCs to ensure you receive the most competitive rate for your income and credit profile. Our advisors guide you through the entire process — from eligibility check to final disbursement — with complete transparency and zero hidden charges. With EAZYKREDIT, you get the right loan at the right rate, without the usual delays or confusion."
+      text: "Our expert team compares multiple lenders to help you find the most suitable loan with competitive interest rates and flexible repayment options."
+    },
+    {
+      heading: "Why Choose EazyKredit?",
+      text: "• No collateral or security required"
+    },
+    {
+      text: "• Fast approvals and quick disbursal"
+    },
+    {
+      text: "• Competitive interest rates"
+    },
+    {
+      text: "• Flexible repayment tenures"
+    },
+    {
+      text: "• Minimal documentation and hassle-free processing"
+    },
+    {
+      text: "Get the financial freedom you need with a loan designed around your lifestyle."
     }
   ],
   serviceBenefits: [

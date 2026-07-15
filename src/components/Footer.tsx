@@ -48,7 +48,7 @@ export default function Footer() {
                 { label: "Business Loan", href: "/loans/business-loan" },
                 { label: "Personal Loan", href: "/loans/personal-loan" },
                 { label: "Loan Against Property", href: "/loans/loan-against-property" },
-                { label: "Car Loan", href: "/loans/car-loan" },
+                { label: "Education Loan", href: "/loans/education-loan" },
                 { label: "Used Car Loan", href: "/loans/used-car-loan" },
               ].map((item) => (
                 <li key={item.href}>

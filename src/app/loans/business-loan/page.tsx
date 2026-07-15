@@ -6,10 +6,10 @@ import LoanPageTemplate, { ProductConfig } from "@/components/loans/LoanPageTemp
 const businessLoanConfig: ProductConfig = {
   loanType: "Business Loan",
   heroDescription: "Whether you are scaling operations, managing working capital, or investing in new equipment, EAZYKREDIT connects your business with the right lender — fast. Get collateral-free funding with competitive rates and a fully digital application process.",
-  interestRateText: "15.00% p.a.",
+  interestRateText: "Dynamic (Market Linked)",
   maxRepaymentTenure: "36 Months",
   heroFeatures: [
-    "Interest rates from 15% p.a.",
+    "Dynamic interest rates based on market profile",
     "Loan amounts from ₹10 Lakhs to ₹10 Crore",
     "Repayment tenure up to 36 months (extendable to 5 years)",
     "Processing fees up to 2% of loan amount"
@@ -41,12 +41,12 @@ const businessLoanConfig: ProductConfig = {
     }
   ],
   keyFeaturesList: [
-    "Interest Rates : From 15% p.a. — benchmarked against your credit profile",
+    "Interest Rates : Dynamic (benchmarked against credit profile)",
     "Loan Amounts : ₹10 Lakhs to ₹10 Crore based on business turnover and eligibility",
     "Repayment Tenure : Up to 36 months; select lenders extend up to 5 years",
     "Processing Fees : Up to 2% of the sanctioned loan amount"
   ],
-  illustrationImage: "/assets/loans/business-loan-feature.png",
+  illustrationImage: "/assets/loans/business loan.jpeg",
   eligibilityList: [
     {
       label: "Age Requirement",
@@ -149,19 +149,37 @@ const businessLoanConfig: ProductConfig = {
     }
   ],
   relatedProducts: [
-    { title: "Home Loan", desc: "Rates starting from 7.15% p.a.", link: "/loans/home-loan" },
-    { title: "Personal Loan", desc: "Rates starting from 10.49% p.a.", link: "/loans/personal-loan" }
+    { title: "Home Loan", desc: "Dynamic (Market Linked)", link: "/loans/home-loan" },
+    { title: "Personal Loan", desc: "Dynamic (Market Linked)", link: "/loans/personal-loan" }
   ],
   blogs: [],
   overviewTitle: "Unsecured Business Loan",
   overviewHeading: "Capital That Moves as Fast as Your Business",
   overviewParagraphs: [
     {
-      text: "Every growing business reaches a point where the right capital at the right time makes all the difference. Whether you need funds to expand your operations, purchase inventory, upgrade equipment, or manage seasonal cash flow gaps, EAZYKREDIT's business loan advisory service connects you with the most suitable lender — quickly and without unnecessary complexity. We work with MSMEs, proprietorships, partnerships, and private limited companies across all sectors."
+      text: "Fuel your business growth with customized Business Loan solutions from EazyKredit. Whether you're expanding operations, purchasing equipment, managing working capital, or launching a new venture, we connect you with leading banks and financial institutions offering competitive financing options."
     },
     {
-      heading: "Why Choose EAZYKREDIT?",
-      text: "We understand that no two businesses are alike. Our advisors evaluate your turnover, credit profile, and funding requirement to match you with the lender offering the best combination of rate, tenure, and eligibility. With access to 25+ banking and NBFC partners, a fully digital process, and dedicated relationship managers, EAZYKREDIT ensures your business gets the capital it needs — without delays, hidden charges, or unnecessary back-and-forth."
+      text: "Our streamlined process ensures quick approvals so you can focus on growing your business."
+    },
+    {
+      heading: "Why Choose EazyKredit?",
+      text: "• Loans for MSMEs and established businesses"
+    },
+    {
+      text: "• Competitive interest rates"
+    },
+    {
+      text: "• Flexible repayment options"
+    },
+    {
+      text: "• Quick processing and minimal documentation"
+    },
+    {
+      text: "• Expert guidance throughout the loan journey"
+    },
+    {
+      text: "Empower your business with the right financial support to achieve long-term success."
     }
   ],
   serviceBenefits: [
