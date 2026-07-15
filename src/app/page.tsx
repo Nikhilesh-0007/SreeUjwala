@@ -132,7 +132,7 @@ export default function Home() {
                 href={`/loans/${product.slug}`}
                 className="bg-white rounded-2xl border border-[#DBEAFE] shadow-sm hover:shadow-md hover:border-[#1E88E5] transition-all duration-300 p-6 flex flex-col items-center text-center gap-3 group"
               >
-                <div className="w-28 h-28 rounded-2xl overflow-hidden shrink-0 border border-[#DBEAFE] relative bg-white p-1">
+                <div className="w-28 h-28 shrink-0 relative">
                   <Image
                     src={product.image}
                     alt={product.title}
