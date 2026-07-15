@@ -124,7 +124,7 @@ export default function Home() {
       <section className="relative w-full flex items-center overflow-hidden" style={{ height: "calc(100vh - 105px)", minHeight: 500 }}>
         {/* Background photo — full screen */}
         <Image
-          src="/assets/hero-couple.png"
+          src="/assets/hero-main.png"
           alt="Hero"
           fill
           sizes="100vw"

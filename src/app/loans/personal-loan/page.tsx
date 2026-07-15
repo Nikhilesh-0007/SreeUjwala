@@ -77,10 +77,7 @@ const personalLoanConfig: ProductConfig = {
     "6 months Bank Statement (reflecting the salary credited)",
     "Current Residence Address Proof (Utility Bill / Maintenance Bill / Rent Agreement & Light Bill with the owner’s name)",
     "Form 16",
-    "Company ID Card / Offer Letter / Visiting Card",
-    "Registered Sale Deed, Allotment Letter or Stamped Agreement of Sale with the Builder (original document)",
-    "Receipts of the advance payments made towards the purchase of flat (original document)",
-    "Occupancy Certificate & Completion Certificate"
+    "Company ID Card / Offer Letter / Visiting Card"
   ],
   timelineSteps: [
     { title: "Submit Application", desc: "Enter your basic income and personal details on our secure digital portal." },
