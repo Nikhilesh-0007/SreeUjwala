@@ -46,7 +46,7 @@ const businessLoanConfig: ProductConfig = {
     "Repayment Tenure : Up to 36 months; select lenders extend up to 5 years",
     "Processing Fees : Up to 2% of the sanctioned loan amount"
   ],
-  illustrationImage: "/assets/loans/business loan.jpeg",
+  illustrationImage: "/assets/loans/business loan.png",
   eligibilityList: [
     {
       label: "Age Requirement",

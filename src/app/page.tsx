@@ -16,7 +16,7 @@ const loanProducts = [
     title: "Business Loans",
     desc: "Empowering Businesses to Grow & Expand",
     slug: "business-loan",
-    image: "/assets/loans/business loan.jpeg",
+    image: "/assets/loans/business loan.png",
   },
   {
     title: "Personal Loans",
