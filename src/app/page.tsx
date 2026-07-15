@@ -28,7 +28,7 @@ const loanProducts = [
     title: "Loan Against Property (LAP)",
     desc: "Unlock the Value of Your Property for Business or Personal Needs",
     slug: "loan-against-property",
-    image: "/assets/loans/loan_against property.png",
+    image: "/assets/loans/LA.png",
   },
   {
     title: "Education Loans",

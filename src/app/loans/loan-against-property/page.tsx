@@ -46,7 +46,7 @@ const lapConfig: ProductConfig = {
     "Repayment Tenure : Up to 15 years; select lenders extend up to 20 years",
     "Processing Fees : 0.5% to 2% of the sanctioned loan amount"
   ],
-  illustrationImage: "/assets/loans/loan_against property.png",
+  illustrationImage: "/assets/loans/LA.png",
   eligibilityList: [
     {
       label: "Property Type",
