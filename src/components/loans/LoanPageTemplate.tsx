@@ -749,9 +749,20 @@ export default function LoanPageTemplate({ config }: LoanPageTemplateProps) {
                       <div className="flex flex-col gap-3">
                         <div className="flex justify-between items-center">
                           <span className="text-xs md:text-sm font-bold text-dark-blue">Loan Amount</span>
-                          <span className="text-sm md:text-base font-extrabold text-primary-blue bg-white border border-border-color px-3 py-1 rounded">
-                            ₹ {(loanAmount / 100000).toFixed(1)} Lakhs
-                          </span>
+                          <div className="flex items-center bg-white border border-border-color rounded px-3 py-1 text-primary-blue font-extrabold text-sm md:text-base">
+                            <span className="mr-1 text-text-gray font-semibold">₹</span>
+                            <input
+                              type="number"
+                              step="0.1"
+                              value={loanAmount / 100000}
+                              onChange={(e) => {
+                                const val = Number(e.target.value);
+                                setLoanAmount(val * 100000);
+                              }}
+                              className="w-16 text-right font-extrabold outline-none border-none p-0 bg-transparent text-primary-blue [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                            />
+                            <span className="ml-1 text-primary-blue">Lakhs</span>
+                          </div>
                         </div>
                         <input
                           type="range"
@@ -772,9 +783,19 @@ export default function LoanPageTemplate({ config }: LoanPageTemplateProps) {
                       <div className="flex flex-col gap-3">
                         <div className="flex justify-between items-center">
                           <span className="text-xs md:text-sm font-bold text-dark-blue">Interest Rate (p.a.)</span>
-                          <span className="text-sm md:text-base font-extrabold text-primary-blue bg-white border border-border-color px-3 py-1 rounded">
-                            {interestRate} %
-                          </span>
+                          <div className="flex items-center bg-white border border-border-color rounded px-3 py-1 text-primary-blue font-extrabold text-sm md:text-base">
+                            <input
+                              type="number"
+                              step="0.05"
+                              value={interestRate}
+                              onChange={(e) => {
+                                const val = Number(e.target.value);
+                                setInterestRate(val);
+                              }}
+                              className="w-14 text-right font-extrabold outline-none border-none p-0 bg-transparent text-primary-blue [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                            />
+                            <span className="ml-1 text-primary-blue">%</span>
+                          </div>
                         </div>
                         <input
                           type="range"
@@ -795,9 +816,19 @@ export default function LoanPageTemplate({ config }: LoanPageTemplateProps) {
                       <div className="flex flex-col gap-3">
                         <div className="flex justify-between items-center">
                           <span className="text-xs md:text-sm font-bold text-dark-blue">Loan Tenure</span>
-                          <span className="text-sm md:text-base font-extrabold text-primary-blue bg-white border border-border-color px-3 py-1 rounded">
-                            {tenureYears} Years
-                          </span>
+                          <div className="flex items-center bg-white border border-border-color rounded px-3 py-1 text-primary-blue font-extrabold text-sm md:text-base">
+                            <input
+                              type="number"
+                              step="1"
+                              value={tenureYears}
+                              onChange={(e) => {
+                                const val = Number(e.target.value);
+                                setTenureYears(val);
+                              }}
+                              className="w-10 text-right font-extrabold outline-none border-none p-0 bg-transparent text-primary-blue [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                            />
+                            <span className="ml-1 text-primary-blue">Years</span>
+                          </div>
                         </div>
                         <input
                           type="range"
