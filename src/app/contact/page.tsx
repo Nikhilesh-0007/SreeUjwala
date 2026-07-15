@@ -41,9 +41,9 @@ export default function Contact() {
   };
 
   return (
-    <div className="flex flex-col w-full bg-section-bg pb-24 pt-32">
+    <div className="flex flex-col w-full bg-section-bg pb-24 pt-24">
       {/* Grid Content */}
-      <section className="max-w-7xl mx-auto w-full px-6 mt-12">
+      <section className="max-w-7xl mx-auto w-full px-6 mt-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
           {/* Details Column Left */}
