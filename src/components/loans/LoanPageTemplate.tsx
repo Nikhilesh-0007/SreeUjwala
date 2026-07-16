@@ -911,7 +911,8 @@ export default function LoanPageTemplate({ config }: LoanPageTemplateProps) {
                           step={50000}
                           value={loanAmount === "" ? 0 : loanAmount}
                           onChange={(e) => setLoanAmount(Number(e.target.value))}
-                          className="w-full h-1.5 bg-border-color rounded-lg appearance-none cursor-pointer accent-primary-blue"
+                          className="w-full h-1.5 rounded-lg appearance-none cursor-pointer accent-primary-blue"
+                          style={{ background: "linear-gradient(to right, #93C5FD, #1D4ED8)" }}
                         />
                       </div>
 
@@ -938,7 +939,8 @@ export default function LoanPageTemplate({ config }: LoanPageTemplateProps) {
                           step={0.05}
                           value={interestRate === "" ? 0 : interestRate}
                           onChange={(e) => setInterestRate(Number(e.target.value))}
-                          className="w-full h-1.5 bg-border-color rounded-lg appearance-none cursor-pointer accent-primary-blue"
+                          className="w-full h-1.5 rounded-lg appearance-none cursor-pointer accent-primary-blue"
+                          style={{ background: "linear-gradient(to right, #93C5FD, #1D4ED8)" }}
                         />
                       </div>
 
@@ -984,7 +986,8 @@ export default function LoanPageTemplate({ config }: LoanPageTemplateProps) {
                           step={1}
                           value={tenureValue === "" ? 0 : tenureValue}
                           onChange={(e) => setTenureValue(Number(e.target.value))}
-                          className="w-full h-1.5 bg-border-color rounded-lg appearance-none cursor-pointer accent-primary-blue"
+                          className="w-full h-1.5 rounded-lg appearance-none cursor-pointer accent-primary-blue"
+                          style={{ background: "linear-gradient(to right, #93C5FD, #1D4ED8)" }}
                         />
                       </div>
                     </div>
