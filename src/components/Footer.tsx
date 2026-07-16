@@ -108,9 +108,21 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[#64748B]">
           <p>&copy; {new Date().getFullYear()} EAZYKREDIT. All Rights Reserved.</p>
-          <div className="flex gap-5">
+          <div className="flex flex-wrap items-center gap-5 justify-center md:justify-end">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms &amp; Conditions</a>
+            <span className="hidden md:inline text-white/20">|</span>
+            <span>
+              Developed by{" "}
+              <a
+                href="https://www.instagram.com/staffarc?igsh=NGI1ajBjank5aWF3"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white text-primary-blue font-bold transition-colors"
+              >
+                StaffArc
+              </a>
+            </span>
           </div>
         </div>
       </div>
