@@ -33,7 +33,7 @@ export default function About() {
   return (
     <div className="flex flex-col w-full">
       {/* Corporate Story */}
-      <section className="relative py-24 overflow-hidden">
+      <section className="relative pt-20 pb-24 overflow-hidden">
         {/* Background image */}
         <img
           src="/about.jpeg"
@@ -47,7 +47,7 @@ export default function About() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="max-w-xl bg-white/80 backdrop-blur-sm rounded-2xl p-8 flex flex-col gap-6"
+            className="max-w-xl bg-white/80 backdrop-blur-sm rounded-2xl p-8 flex flex-col gap-6 transform -translate-y-2 md:-translate-y-5"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-dark-blue">About Us</h2>
             <p className="text-text-gray font-medium leading-relaxed text-base md:text-lg">
